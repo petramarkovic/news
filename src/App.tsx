@@ -1,10 +1,11 @@
-import './App.css'
+import Header from "./components/containers/Header"
 
 function App() {
 
   return (
     <>
-      <h1>News app</h1>
+      <Header />
+      <h1 className="text-3xl font-bold underline">News app</h1>
     </>
   )
 }
