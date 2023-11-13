@@ -1,11 +1,12 @@
 import Header from "./components/containers/Header"
+import { TopNews } from "./components/containers/TopNews"
 
 function App() {
 
   return (
     <>
       <Header />
-      <h1 className="text-3xl font-bold underline">News app</h1>
+      <TopNews />
     </>
   )
 }
