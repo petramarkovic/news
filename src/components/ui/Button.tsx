@@ -5,10 +5,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
-    const predefinedClasses = 'text-xl text-slate-500 font-bold transition ease-in-out';
-    const combinedClasses = `${predefinedClasses} ${className || ''}`;
   return (
-    <button className={combinedClasses} {...rest}>
+    <button className={className} {...rest}>
         {children}
     </button>
   )

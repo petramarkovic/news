@@ -6,9 +6,9 @@ export const Navbar = () => {
   return (
     <nav>
         <ul className='flex'>
-            <Link to="/" className='text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5'>Top News</Link>
-            <Link to="/categories" className='text-xl text-slate-500 font-bold transition ease-in-out ml-6 lowercase hover:text-violet-600 py-5'>Categories</Link>
-            <Button className='ml-6 lowercase hover:text-violet-600 py-5'>Search
+            <Link to="/" className='link'>Top News</Link>
+            <Link to="/categories" className='link'>Categories</Link>
+            <Button className='link'>Search
               <MagnifyingGlassIcon className='h-6 w-6 ml-2 tex-violet-600 inline'/>
             </Button>
         </ul>

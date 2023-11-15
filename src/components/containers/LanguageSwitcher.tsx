@@ -1,21 +1,18 @@
 import { Button } from "../ui/Button"
+import { useLanguageContext } from "../store/languageContext"
 // import { useState } from 'react'
 
 export const LanguageSwitcher = () => {
-    // const [countryCode, setCountryCode] = useState<string>('GB');
+    const { lang, setLang } = useLanguageContext();
 
-    // const setGbStateHandler = () => {
-    //     setCountryCode('GB');
-    // }
-
-    // const setUsStateHandler = () => {
-    //     setCountryCode('US');
-    // }
+    const handleLanguageChange = (newLang: string) => {
+        setLang(newLang);
+    };
 
     return (
         <div className="flex">
-            <Button className="bg-violet-500 text-white px-6 py-5 enabled:hover:bg-slate-50 enabled:hover:text-violet-500 border-solid border-violet-500 border-2">GB</Button>
-            <Button className="bg-violet-500 text-white px-6 py-5 enabled:hover:bg-slate-50 enabled:hover:text-violet-500 border-solid border-violet-500 border-2">US</Button>
+            <Button className={`btn ${lang === 'GB' ? 'active' : 'inactive'}`} onClick={() => handleLanguageChange('GB')}>GB</Button>
+            <Button className={`btn ${lang === 'US' ? 'active' : 'inactive'}`} onClick={() => handleLanguageChange('US')}>US</Button>
         </div>
     )
 }

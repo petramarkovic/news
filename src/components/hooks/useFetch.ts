@@ -14,7 +14,6 @@ type MyDataType = {
         author: string;
         urlToImage: string;
 		description: string;
-        // Add other fields as needed
     }[];
 };
 
