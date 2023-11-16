@@ -1,23 +1,12 @@
 import { useState, useEffect } from 'react'
 
-interface FetchHookResults {
-    data: MyDataType | null;
+type FetchHookResults<T> = {
+    data: T | null;
     isPending: boolean;
     error: string | null;
 }
 
-type MyDataType = {
-    articles: {
-        id: number;
-        title: string;
-        content: string;
-        author: string;
-        urlToImage: string;
-		description: string;
-    }[];
-};
-
-const useFetch = (url: string): FetchHookResults  => {
+const useFetch = <T>(url: string): FetchHookResults<T>  => {
 	const [data, setData] = useState(null);
 	const [isPending, setIsPending] = useState(true);
 	const [error, setError] = useState(null);

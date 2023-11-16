@@ -2,9 +2,20 @@ import { Wrap } from "../ui/Wrap"
 import useFetch from "../../hooks/useFetch"
 import { useLanguageContext } from "../../store/languageContext";
 
+type MyDataType = {
+    articles: {
+        id: number;
+        title: string;
+        content: string;
+        author: string;
+        urlToImage: string;
+		description: string;
+    }[];
+};
+
 export const TopNews = () => {
     const { lang } = useLanguageContext();
-    const { data, isPending, error } = useFetch(`https://newsapi.org/v2/top-headlines?country=${lang}&apiKey=0db13269a0aa4baab350e830f634fd15`);
+    const { data, isPending, error } = useFetch<MyDataType>(`https://newsapi.org/v2/top-headlines?country=${lang}&apiKey=0db13269a0aa4baab350e830f634fd15`);
     
     const GBTitle = 'Great Britain';
     const USTitle = 'United States';
