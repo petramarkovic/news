@@ -15,7 +15,7 @@ type MyDataType = {
 
 export const TopNews = () => {
     const { lang } = useLanguageContext();
-    const { data, isPending, error } = useFetch<MyDataType>(`https://newsapi.org/v2/top-headlines?country=${lang}&apiKey=0db13269a0aa4baab350e830f634fd15`);
+    const { data, isPending, error } = useFetch<MyDataType>(`https://newsapi.org/v2/top-headlines?country=${lang}&apiKey=`);
     
     const GBTitle = 'Great Britain';
     const USTitle = 'United States';
