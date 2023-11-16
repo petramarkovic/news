@@ -1,6 +1,5 @@
 import { Button } from "../ui/Button"
-import { useLanguageContext } from "../store/languageContext"
-// import { useState } from 'react'
+import { useLanguageContext } from "../../store/languageContext"
 
 export const LanguageSwitcher = () => {
     const { lang, setLang } = useLanguageContext();

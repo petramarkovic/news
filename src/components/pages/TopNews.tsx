@@ -1,6 +1,6 @@
 import { Wrap } from "../ui/Wrap"
-import useFetch from "../hooks/useFetch"
-import { useLanguageContext } from "../store/languageContext";
+import useFetch from "../../hooks/useFetch"
+import { useLanguageContext } from "../../store/languageContext";
 
 export const TopNews = () => {
     const { lang } = useLanguageContext();
