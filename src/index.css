@@ -22,4 +22,8 @@
 	.inactive {
 		@apply opacity-80;
 	}
+
+	.disabled {
+		@apply bg-slate-500 opacity-50 border-slate-500;
+	}
 }

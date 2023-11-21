@@ -4,9 +4,9 @@ export default {
 	theme: {
 		extend: {
 			padding: {
-				'56-25': '56.25%'
-			}
-		}
+				'56-25': '56.25%',
+			},
+		},
 	},
-	plugins: []
-};
+	plugins: [],
+}

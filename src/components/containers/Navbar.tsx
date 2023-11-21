@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../ui/Button';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom'
+import { Button } from '../ui/Button'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 export const Navbar = () => {
 	return (
@@ -8,14 +8,12 @@ export const Navbar = () => {
 			<ul className='flex'>
 				<Link
 					to='/'
-					className='link'
-				>
+					className='link'>
 					Top News
 				</Link>
 				<Link
 					to='/categories'
-					className='link'
-				>
+					className='link'>
 					Categories
 				</Link>
 				<Button className='link'>
@@ -24,5 +22,5 @@ export const Navbar = () => {
 				</Button>
 			</ul>
 		</nav>
-	);
-};
+	)
+}

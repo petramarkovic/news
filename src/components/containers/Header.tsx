@@ -1,6 +1,6 @@
-import { Wrap } from '../ui/Wrap';
-import { Navbar } from './Navbar';
-import { LanguageSwitcher } from './LanguageSwitcher';
+import { Wrap } from '../ui/Wrap'
+import { Navbar } from './Navbar'
+import { LanguageSwitcher } from './LanguageSwitcher'
 
 const Header = () => {
 	return (
@@ -12,7 +12,7 @@ const Header = () => {
 				</div>
 			</Wrap>
 		</header>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header
