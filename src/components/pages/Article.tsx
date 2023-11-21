@@ -12,13 +12,24 @@ export const Article = () => {
       <Wrap>
         <article className="article">
           <h1 className="article__title">{articleData.title}</h1>
-          <img src={articleData.urlToImage} alt={articleData.description} />
-          <p>{articleData.content}</p>
+          <img
+            className="article__img"
+            src={articleData.urlToImage}
+            alt={articleData.description}
+          />
+          <p className="article__text">
+            {articleData.content ?? "Text unavailable."}
+          </p>
         </article>
-        <Link to="/" className="link link--purple inline-flex items-center">
-          <ChevronLeftIcon className="h-6 w-5 hover:stroke-violet-500 mr-2" />
-          Go back to the list
-        </Link>
+        <div className="flex items-center justify-center">
+          <Link
+            to="/"
+            className="link link--purple inline-flex items-center justify-center"
+          >
+            <ChevronLeftIcon className="h-6 w-5 hover:stroke-violet-500 mr-2" />
+            Go back to the list
+          </Link>
+        </div>
       </Wrap>
     </div>
   );

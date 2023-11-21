@@ -12,7 +12,7 @@
   }
 
   .link {
-    @apply text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5 mr-3;
+    @apply text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5 mr-5 inline-flex items-center;
   }
 
   .link--purple {
@@ -32,10 +32,32 @@
   }
 
   .article {
-    @apply text-black py-20;
+    @apply text-black pt-20;
   }
 
   .article__title {
-    @apply text-lg text-violet-900 font-bold;
+    @apply text-4xl text-violet-400 font-bold text-center mb-5;
+  }
+
+  .article__img {
+    @apply object-cover max-w-md w-full m-auto;
+  }
+
+  .article__text {
+    @apply text-black font-bold text-xl max-w-2xl text-center py-10 w-full m-auto;
+  }
+}
+
+.animate-fadeInOut {
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 1;
   }
 }

@@ -2,6 +2,7 @@ import { Wrap } from "../ui/Wrap";
 import useFetch from "../../hooks/useFetch";
 import { useLanguageContext } from "../../store/languageContext";
 import { Link } from "react-router-dom";
+import { CardSkeleton } from "../skeletons/CardSkeleton";
 
 type MyDataType = {
   articles: {
@@ -25,15 +26,19 @@ export const TopNews = () => {
 
   const removedArticle = "Removed";
 
+  const skeletonArray = Array.from({ length: 9 }, (_, index) => (
+    <CardSkeleton key={index} />
+  ));
+
   return (
     <div>
       <Wrap>
         <h1 className="font-extrabold p-2 my-8 text-5xl text-slate-900">
           Top News from {lang === "GB" ? GBTitle : USTitle}:
         </h1>
-        <div>
-          {isPending && <p>Loading..</p>}
+        <div className="flex flex-wrap">
           {error && <p>Error fetching data</p>}
+          {isPending && skeletonArray}
           {data && (
             <div className="flex flex-wrap">
               {data.articles
