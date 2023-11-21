@@ -30,4 +30,12 @@
   .disabled {
     @apply bg-slate-500 opacity-50 border-slate-500;
   }
+
+  .article {
+    @apply text-black py-20;
+  }
+
+  .article__title {
+    @apply text-lg text-violet-900 font-bold;
+  }
 }

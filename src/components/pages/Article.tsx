@@ -10,8 +10,8 @@ export const Article = () => {
   return (
     <div className="">
       <Wrap>
-        <article>
-          <h1>{articleData.title}</h1>
+        <article className="article">
+          <h1 className="article__title">{articleData.title}</h1>
           <img src={articleData.urlToImage} alt={articleData.description} />
           <p>{articleData.content}</p>
         </article>
