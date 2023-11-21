@@ -3,27 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-	html {
-		font-family: 'Raleway', sans-serif;
-	}
+  html {
+    font-family: "Raleway", sans-serif;
+  }
 
-	.btn {
-		@apply bg-violet-500 text-white px-6 py-5 enabled:hover:bg-slate-50 enabled:hover:text-violet-500 border-solid border-violet-500 border-2 font-bold;
-	}
+  .btn {
+    @apply bg-violet-500 text-white px-6 py-5 enabled:hover:bg-slate-50 enabled:hover:text-violet-500 border-solid border-violet-500 border-2 font-bold;
+  }
 
-	.link {
-		@apply text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5 mr-3;
-	}
+  .link {
+    @apply text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5 mr-3;
+  }
 
-	.active {
-		@apply bg-violet-900;
-	}
+  .link--purple {
+    @apply text-white uppercase text-base bg-violet-500 p-4 border-2 border-violet-500 hover:bg-white;
+  }
 
-	.inactive {
-		@apply opacity-80;
-	}
+  .active {
+    @apply bg-violet-900;
+  }
 
-	.disabled {
-		@apply bg-slate-500 opacity-50 border-slate-500;
-	}
+  .inactive {
+    @apply opacity-80;
+  }
+
+  .disabled {
+    @apply bg-slate-500 opacity-50 border-slate-500;
+  }
 }
