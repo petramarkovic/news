@@ -14,6 +14,6 @@
 
 ## Beyond the Surface
 
-Curious about the tech stack? Dive into the GitHub repository to explore the codebase, contribute, or provide feedback. Whether you're a news enthusiast or a developer seeking inspiration, your engagement is valued.
+Curious about the tech stack? Dive into the GitHub repository to explore the codebase.
 
 Check out the code on the develop branch! Cheers! 🍻✌👩🏼‍💻
