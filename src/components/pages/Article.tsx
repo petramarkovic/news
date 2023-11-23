@@ -10,18 +10,20 @@ export const Article = () => {
   return (
     <div className="">
       <Wrap>
-        <article className="article">
-          <h1 className="article__title">{articleData.title}</h1>
+        <article className="text-black pt-20">
+          <h1 className="text-4xl text-violet-400 font-bold text-center mb-5">
+            {articleData.title}
+          </h1>
           <img
-            className="article__img"
+            className="object-cover max-w-md w-full m-auto"
             src={articleData.urlToImage}
             alt={articleData.description}
           />
-          <p className="article__text">
+          <p className="text-black font-bold text-xl max-w-2xl text-center py-10 w-full m-auto">
             {articleData.content ?? "Text unavailable."}
           </p>
         </article>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mb-6">
           <Link
             to="/"
             className="link link--purple inline-flex items-center justify-center"

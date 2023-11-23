@@ -30,22 +30,6 @@
   .disabled {
     @apply bg-slate-500 opacity-50 border-slate-500;
   }
-
-  .article {
-    @apply text-black pt-20;
-  }
-
-  .article__title {
-    @apply text-4xl text-violet-400 font-bold text-center mb-5;
-  }
-
-  .article__img {
-    @apply object-cover max-w-md w-full m-auto;
-  }
-
-  .article__text {
-    @apply text-black font-bold text-xl max-w-2xl text-center py-10 w-full m-auto;
-  }
 }
 
 .animate-fadeInOut {
