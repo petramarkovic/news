@@ -3,61 +3,61 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: "Raleway", sans-serif;
-  }
+	html {
+		font-family: 'Raleway', sans-serif;
+	}
 
-  .btn {
-    @apply bg-violet-500 text-white px-6 py-5 enabled:hover:bg-slate-50 enabled:hover:text-violet-500 border-solid border-violet-500 border-2 font-bold;
-  }
+	.btn {
+		@apply bg-violet-500 text-white px-6 py-5 enabled:hover:bg-slate-50 enabled:hover:text-violet-500 border-solid border-violet-500 border-2 font-bold;
+	}
 
-  .link {
-    @apply text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5 mr-5 inline-flex items-center;
-  }
+	.link {
+		@apply text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5 mr-5 inline-flex items-center;
+	}
 
-  .link--purple {
-    @apply text-white uppercase text-base bg-violet-500 p-4 border-2 border-violet-500 hover:bg-white;
-  }
+	.link--purple {
+		@apply text-white uppercase text-base bg-violet-500 p-4 border-2 border-violet-500 hover:bg-white;
+	}
 
-  .active {
-    @apply bg-violet-900;
-  }
+	.active {
+		@apply bg-violet-900;
+	}
 
-  .inactive {
-    @apply opacity-80;
-  }
+	.inactive {
+		@apply opacity-80;
+	}
 
-  .disabled {
-    @apply bg-slate-500 opacity-50 border-slate-500;
-  }
+	.disabled {
+		@apply bg-slate-500 opacity-50 border-slate-500;
+	}
 
-  .article {
-    @apply text-black pt-20;
-  }
+	.article {
+		@apply text-black pt-20;
+	}
 
-  .article__title {
-    @apply text-4xl text-violet-400 font-bold text-center mb-5;
-  }
+	.article__title {
+		@apply text-4xl text-violet-400 font-bold text-center mb-5;
+	}
 
-  .article__img {
-    @apply object-cover max-w-md w-full m-auto;
-  }
+	.article__img {
+		@apply object-cover max-w-md w-full m-auto;
+	}
 
-  .article__text {
-    @apply text-black font-bold text-xl max-w-2xl text-center py-10 w-full m-auto;
-  }
+	.article__text {
+		@apply text-black font-bold text-xl max-w-2xl text-center py-10 w-full m-auto;
+	}
 }
 
 .animate-fadeInOut {
-  animation: fadeInOut 2s ease-in-out infinite;
+	animation: fadeInOut 2s ease-in-out infinite;
 }
 
 @keyframes fadeInOut {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  60% {
-    opacity: 1;
-  }
+	0%,
+	100% {
+		opacity: 0.3;
+	}
+	60% {
+		opacity: 1;
+	}
 }
