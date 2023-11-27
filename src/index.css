@@ -8,11 +8,11 @@
   }
 
   .btn {
-    @apply bg-violet-500 text-white px-6 py-5 enabled:hover:bg-slate-50 enabled:hover:text-violet-500 border-solid border-violet-500 border-2 font-bold;
+    @apply text-white px-6 py-5 enabled:hover:text-emerald-400;
   }
 
   .link {
-    @apply text-xl text-slate-500 font-bold transition ease-in-out lowercase hover:text-violet-500 py-5 mr-5 inline-flex items-center;
+    @apply text-base text-stone-50 transition ease-in-out lowercase hover:text-emerald-200 py-5 mr-5 inline-flex items-center;
   }
 
   .link--purple {
@@ -20,7 +20,7 @@
   }
 
   .active {
-    @apply bg-violet-900;
+    @apply bg-emerald-400 text-stone-900 pointer-events-none;
   }
 
   .inactive {
