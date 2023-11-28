@@ -31,9 +31,9 @@ export const TopNews = () => {
 	))
 
 	return (
-		<div>
+		<div className='bg-stone-950 py-20'>
 			<Wrap>
-				<h1 className='font-extrabold p-2 my-8 text-5xl text-slate-900'>
+				<h1 className='p-2 mb-8 text-4xl text-neutral-50'>
 					Top News from {lang === 'GB' ? GBTitle : USTitle}:
 				</h1>
 				<div className='flex flex-wrap'>
@@ -53,7 +53,7 @@ export const TopNews = () => {
 										<Link
 											to='/article'
 											state={article}
-											className='p-4 border-solid border-2 border-slate-100 rounded-lg h-full flex flex-col hover:border-violet-500 hover:cursor-pointer transition'>
+											className='p-4 bg-neutral-950 shadow hover:shadow-2xl rounded-lg h-full flex flex-col hover:border-violet-500 hover:cursor-pointer transition'>
 											<h2 className='text-slate-600 font-bold mb-2 text-lg'>
 												{article.title}
 											</h2>
