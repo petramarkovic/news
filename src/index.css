@@ -15,10 +15,6 @@
     @apply text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-5 mr-5 inline-flex items-center;
   }
 
-  .link--purple {
-    @apply text-white uppercase text-base bg-violet-500 p-4 border-2 border-violet-500 hover:bg-white;
-  }
-
   .active {
     @apply bg-rose-300 text-stone-900 pointer-events-none;
   }
@@ -28,7 +24,7 @@
   }
 
   .disabled {
-    @apply bg-slate-500 opacity-50 border-slate-500;
+    @apply bg-stone-800 opacity-50 text-stone-400;
   }
 }
 
