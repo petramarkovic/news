@@ -4,10 +4,10 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const Header = () => {
   return (
-    <header className="bg-stone-950 shadow-sm">
+    <header className="bg-stone-950 shadow-sm border border-rose-100 border-opacity-10">
       <Wrap>
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-medium text-emerald-200">Newz.</h1>
+          <h1 className="text-xl font-medium text-rose-200">Newz.</h1>
           <Navbar />
           <LanguageSwitcher />
         </div>

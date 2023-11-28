@@ -3,29 +3,29 @@
 @tailwind utilities;
 
 @layer base {
-	html {
-		font-family: 'Raleway', sans-serif;
-	}
+  html {
+    font-family: "Poppins", sans-serif;
+  }
 
   .btn {
-    @apply text-white px-6 py-5 enabled:hover:text-emerald-400;
+    @apply text-white px-6 py-5 enabled:hover:text-rose-300 font-medium;
   }
 
   .link {
-    @apply text-base text-stone-50 transition ease-in-out lowercase hover:text-emerald-200 py-5 mr-5 inline-flex items-center;
+    @apply text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-5 mr-5 inline-flex items-center;
   }
 
-	.link--purple {
-		@apply text-white uppercase text-base bg-violet-500 p-4 border-2 border-violet-500 hover:bg-white;
-	}
+  .link--purple {
+    @apply text-white uppercase text-base bg-violet-500 p-4 border-2 border-violet-500 hover:bg-white;
+  }
 
   .active {
-    @apply bg-emerald-400 text-stone-900 pointer-events-none;
+    @apply bg-rose-300 text-stone-900 pointer-events-none;
   }
 
-	.inactive {
-		@apply opacity-80;
-	}
+  .inactive {
+    @apply opacity-80;
+  }
 
   .disabled {
     @apply bg-slate-500 opacity-50 border-slate-500;
@@ -33,15 +33,15 @@
 }
 
 .animate-fadeInOut {
-	animation: fadeInOut 2s ease-in-out infinite;
+  animation: fadeInOut 2s ease-in-out infinite;
 }
 
 @keyframes fadeInOut {
-	0%,
-	100% {
-		opacity: 0.3;
-	}
-	60% {
-		opacity: 1;
-	}
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 1;
+  }
 }

@@ -14,7 +14,7 @@ export const Navbar = () => {
         </Link>
         <Button className="link">
           Search
-          <MagnifyingGlassIcon className="h-6 w-6 ml-2 tex-violet-600 inline" />
+          <MagnifyingGlassIcon className="h-4 w-4 ml-2 tex-white inline" />
         </Button>
       </ul>
     </nav>
