@@ -1,6 +1,6 @@
 import * as reactRouterDom from "react-router-dom";
-import { Wrap } from "../ui/Wrap";
 import { Link } from "react-router-dom";
+import { Wrap } from "../ui/Wrap";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 export const Article = () => {
@@ -14,7 +14,7 @@ export const Article = () => {
           <h1 className="text-4xl text-rose-200 font-bold text-center mb-10">
             {articleData.title}
           </h1>
-          <div className="lg:flex mb-10">
+          <div className="lg:flex mb-10 lg:flex-wrap">
             <img
               className="object-cover max-w-md w-full m-auto rounded-lg shadow-2xl"
               src={articleData.urlToImage}
@@ -22,6 +22,9 @@ export const Article = () => {
             />
             <p className="text-neutral-300 font-normal text-base max-w-2xl py-10 w-full m-auto px-3">
               {articleData.content ?? "Text unavailable."}
+            </p>
+            <p className="text-white w-full text-center text-lg mt-5 font-semibold">
+              Written by {articleData.author}
             </p>
           </div>
         </article>

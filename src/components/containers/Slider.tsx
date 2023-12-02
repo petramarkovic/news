@@ -1,22 +1,11 @@
+import { commonPropsInterface } from "../../types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { Card } from "./Card";
 import "swiper/css";
 import "swiper/css/navigation";
-import "../../swiper.css";
 
-type ArticleType = {
-  title: string;
-  urlToImage: string;
-  description: string;
-};
-
-interface SliderProps {
-  data: {
-    articles: ArticleType[];
-  };
-}
-
-export const Slider = ({ data }: SliderProps) => {
+export const Slider: React.FC<commonPropsInterface> = (props) => {
   const removedArticle = "Removed";
   const maxArticlesToShow = 5;
 
@@ -44,7 +33,7 @@ export const Slider = ({ data }: SliderProps) => {
       modules={[Navigation]}
       className="pb-10"
     >
-      {data.articles
+      {props.data.articles
         .filter((article) => !article.title.includes(removedArticle))
         .slice(0, maxArticlesToShow)
         .map((article, index) => (
@@ -52,16 +41,11 @@ export const Slider = ({ data }: SliderProps) => {
             key={index}
             className="self-stretch h-auto flex flex-col p-5"
           >
-            <h3 className="mb-4 text-neutral-200 font-normal">
-              {article.title}
-            </h3>
-            <div className="relative pb-56-25 mt-auto">
-              <img
-                src={article.urlToImage ?? "placeholder-image.jpg"}
-                alt={article.description}
-                className="absolute top-0 left-0 w-full h-full object-cover rounded-lg opacity-60"
-              />
-            </div>
+            <Card
+              title={article.title}
+              description={article.description}
+              urlToImage={article.urlToImage}
+            />
           </SwiperSlide>
         ))}
     </Swiper>

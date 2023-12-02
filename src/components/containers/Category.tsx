@@ -1,24 +1,10 @@
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { Button } from "../ui/Button";
 import { useState } from "react";
+import { categoryProps } from "../../types";
+import { Button } from "../ui/Button";
 import { Slider } from "./Slider";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 
-type ArticleType = {
-  title: string;
-  content: string;
-  author: string;
-  urlToImage: string;
-  description: string;
-};
-
-interface CategoryProps {
-  data: {
-    articles: ArticleType[];
-  };
-  title: string;
-}
-
-export const Category = ({ data, title }: CategoryProps) => {
+export const Category: React.FC<categoryProps> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const clickHandler = () => {
@@ -31,14 +17,14 @@ export const Category = ({ data, title }: CategoryProps) => {
         className="flex items-center justify-between capitalize text-2xl font-medium w-full text-left text-neutral-50 p-4 rounded-lg hover:text-rose-400 transition"
         onClick={clickHandler}
       >
-        {title}
+        {props.title}
         {!isOpen ? (
           <ChevronDownIcon className="w-5 h-5" />
         ) : (
           <ChevronUpIcon className="w-5 h-5" />
         )}
       </Button>
-      {isOpen && <Slider data={data} />}
+      {isOpen && <Slider data={props.data} />}
     </div>
   );
 };

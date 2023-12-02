@@ -1,6 +1,6 @@
+import { Lang } from "./Lang";
 import { Wrap } from "../ui/Wrap";
 import { Navbar } from "./Navbar";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <h1 className="text-xl font-medium text-rose-200">Newz.</h1>
           <Navbar />
-          <LanguageSwitcher />
+          <Lang />
         </div>
       </Wrap>
     </header>

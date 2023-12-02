@@ -28,6 +28,14 @@
   }
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  @apply bottom-2 top-auto left-auto text-rose-200 text-lg w-5 h-6;
+  &::after {
+    @apply text-lg;
+  }
+}
+
 .animate-fadeInOut {
   animation: fadeInOut 2s ease-in-out infinite;
 }

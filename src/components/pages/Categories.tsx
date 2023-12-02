@@ -1,18 +1,9 @@
-import { Wrap } from "../ui/Wrap";
 import { useLanguageContext } from "../../store/languageContext";
 import { useState, useEffect } from "react";
+import { ArticlesInterface } from "../../types";
+import { Wrap } from "../ui/Wrap";
 import { Category } from "../containers/Category";
 import { CategorySkeleton } from "../skeletons/CategorySkeleton";
-
-type MyDataType = {
-  articles: {
-    title: string;
-    content: string;
-    author: string;
-    urlToImage: string;
-    description: string;
-  }[];
-};
 
 export const Categories = () => {
   const { lang } = useLanguageContext();
@@ -27,12 +18,12 @@ export const Categories = () => {
     "technology",
   ];
 
-  const [categoryData, setCategoryData] = useState<MyDataType[]>([]);
+  const [categoryData, setCategoryData] = useState<ArticlesInterface[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchDataForCategories = async () => {
-      const dataForCategories: MyDataType[] = [];
+      const dataForCategories: ArticlesInterface[] = [];
 
       for (const category of categories) {
         const response = await fetch(

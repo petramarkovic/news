@@ -1,44 +1,37 @@
-import { createContext, useContext } from 'react'
-import { ReactNode, useState } from 'react'
-
-interface LanguageContextType {
-	lang: string
-	setLang(value: string): void
-}
-
-interface LanguageContextProps {
-	children: ReactNode
-}
+import { useState } from "react";
+import { createContext, useContext } from "react";
+import { childrenProps } from "../types";
+import { LanguageContextInterface } from "../types";
 
 const LanguageInitialState = {
-	lang: 'GB',
-	setLang: () => {},
-}
+  lang: "GB",
+  setLang: () => {},
+};
 
 export const LanguageContext =
-	createContext<LanguageContextType>(LanguageInitialState)
+  createContext<LanguageContextInterface>(LanguageInitialState);
 
-export function LanguageProvider({ children }: LanguageContextProps) {
-	const [lang, setLang] = useState('GB')
+export const LanguageProvider: React.FC<childrenProps> = (props) => {
+  const [lang, setLang] = useState("GB");
 
-	const contextValue: LanguageContextType = {
-		lang,
-		setLang,
-	}
+  const contextValue: LanguageContextInterface = {
+    lang,
+    setLang,
+  };
 
-	return (
-		<LanguageContext.Provider value={contextValue}>
-			{children}
-		</LanguageContext.Provider>
-	)
-}
+  return (
+    <LanguageContext.Provider value={contextValue}>
+      {props.children}
+    </LanguageContext.Provider>
+  );
+};
 
-export const useLanguageContext = (): LanguageContextType => {
-	const context = useContext(LanguageContext)
-	const { lang, setLang } = context
+export const useLanguageContext = (): LanguageContextInterface => {
+  const context = useContext(LanguageContext);
+  const { lang, setLang } = context;
 
-	return {
-		lang,
-		setLang,
-	}
-}
+  return {
+    lang,
+    setLang,
+  };
+};
