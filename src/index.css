@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .btn {
+    @apply text-white px-6 py-5 enabled:hover:text-rose-300 font-medium;
+  }
+
+  .link {
+    @apply text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-5 mr-5 inline-flex items-center;
+  }
+
+  .active {
+    @apply bg-rose-300 text-stone-900 pointer-events-none;
+  }
+
+  .inactive {
+    @apply opacity-80;
+  }
+
+  .disabled {
+    @apply bg-stone-800 opacity-50 text-stone-400;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @apply bottom-2 top-auto left-auto text-rose-200 text-lg w-5 h-6;
+  &::after {
+    @apply text-lg;
+  }
+}
+
+.animate-fadeInOut {
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 1;
+  }
+}
