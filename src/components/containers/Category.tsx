@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { categoryProps } from "../../types";
+import { CategoryProps } from "../../types";
 import { Button } from "../ui/Button";
 import { Slider } from "./Slider";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 
-export const Category: React.FC<categoryProps> = (props) => {
+export const Category: React.FC<CategoryProps> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const clickHandler = () => {

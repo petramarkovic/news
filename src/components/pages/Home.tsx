@@ -5,7 +5,7 @@ export const Home = () => {
   return (
     <div className="bg-stone-950 py-20 min-h-screen">
       <Wrap>
-        <Articles />
+        <Articles category="" />
       </Wrap>
     </div>
   );

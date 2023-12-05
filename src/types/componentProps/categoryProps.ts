@@ -1,6 +1,6 @@
 import { RichArticleInterface } from "..";
 
-export interface categoryProps {
+export interface CategoryProps {
   data: {
     articles: RichArticleInterface[];
   };

@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import { Card } from "../containers/Card";
 import { CardSkeleton } from "../skeletons/CardSkeleton";
 import { ArticlesInterface } from "../../types";
+import { ArticlesProps } from "../../types";
 
-export const Articles = () => {
+export const Articles: React.FC<ArticlesProps> = (props) => {
   const { lang } = useLanguageContext();
   const key = `${process.env.REACT_APP_API_KEY}`;
   const { data, isPending, error } = useFetch<ArticlesInterface>(
-    `https://newsapi.org/v2/top-headlines?country=${lang}&apiKey=${key}`
+    `https://newsapi.org/v2/top-headlines?country=${lang}&${props.category}&apiKey=${key}`
   );
 
   const GBTitle = "Great Britain";
@@ -31,7 +32,7 @@ export const Articles = () => {
         {isPending && skeletonArray}
         {data && (
           <div className="flex flex-wrap w-full">
-            {data.articles
+            {props.articles
               .filter((article) => !article.title.includes(removedArticle))
               .map((article, index) => (
                 <div
