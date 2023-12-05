@@ -10,7 +10,7 @@ export const Articles: React.FC<ArticlesProps> = (props) => {
   const { lang } = useLanguageContext();
   const key = `${process.env.REACT_APP_API_KEY}`;
   const { data, isPending, error } = useFetch<ArticlesInterface>(
-    `https://newsapi.org/v2/top-headlines?country=${lang}&${props.category}&apiKey=${key}`
+    `https://newsapi.org/v2/top-headlines?country=${lang}&category=${props.category}&apiKey=${key}`
   );
 
   const GBTitle = "Great Britain";
