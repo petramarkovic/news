@@ -1,5 +1,5 @@
-import { ArticlesInterface } from "..";
+// import { ArticlesInterface } from "..";
 
-export interface ArticlesProps extends ArticlesInterface {
+export interface ArticlesProps {
   category: string;
 }

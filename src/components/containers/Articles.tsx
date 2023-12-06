@@ -32,7 +32,7 @@ export const Articles: React.FC<ArticlesProps> = (props) => {
         {isPending && skeletonArray}
         {data && (
           <div className="flex flex-wrap w-full">
-            {props.articles
+            {data.articles
               .filter((article) => !article.title.includes(removedArticle))
               .map((article, index) => (
                 <div
