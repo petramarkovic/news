@@ -2,6 +2,7 @@ import Header from "./components/containers/Header";
 import { Home } from "./components/pages/Home";
 import { Categories } from "./components/pages/Categories";
 import { Article } from "./components/pages/Article";
+import { Articles } from "./components/containers/Articles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./store/languageContext";
 
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/article" element={<Article />} />
+          <Route path="/categories/:category" element={<Articles />} />
         </Routes>
       </LanguageProvider>
     </Router>
