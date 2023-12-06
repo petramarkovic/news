@@ -3,6 +3,7 @@ import { CategoryProps } from "../../types";
 import { Button } from "../ui/Button";
 import { Slider } from "./Slider";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export const Category: React.FC<CategoryProps> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -25,6 +26,9 @@ export const Category: React.FC<CategoryProps> = (props) => {
         )}
       </Button>
       {isOpen && <Slider data={props.data} />}
+      <Link className="text-white" to={`/categories/${props.title}`}>
+        See all {props.title} news from{" "}
+      </Link>
     </div>
   );
 };
