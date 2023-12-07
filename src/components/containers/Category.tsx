@@ -4,8 +4,10 @@ import { Button } from "../ui/Button";
 import { Slider } from "./Slider";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { useLanguageContext } from "../../store/languageContext";
 
 export const Category: React.FC<CategoryProps> = (props) => {
+  const { lang } = useLanguageContext();
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const clickHandler = () => {
@@ -26,8 +28,11 @@ export const Category: React.FC<CategoryProps> = (props) => {
         )}
       </Button>
       {isOpen && <Slider data={props.data} />}
-      <Link className="text-white" to={`/categories/${props.title}`}>
-        See all {props.title} news from{" "}
+      <Link
+        className="text-neutral-800 font-bold py-2 px-4 mt-3 mx-auto rounded-lg w-1/3 flex justify-center bg-rose-100"
+        to={`/categories/${props.title}`}
+      >
+        See all {props.title} news from {lang}
       </Link>
     </div>
   );
