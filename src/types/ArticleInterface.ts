@@ -6,5 +6,5 @@ export interface ArticleInterface {
 
 export interface RichArticleInterface extends ArticleInterface {
   content: string;
-  author: string;
+  author?: string;
 }
