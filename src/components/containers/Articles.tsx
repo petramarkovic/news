@@ -5,6 +5,7 @@ import { Card } from "../containers/Card";
 import { CardSkeleton } from "../skeletons/CardSkeleton";
 import { ArticlesInterface } from "../../types";
 import { Wrap } from "../ui/Wrap";
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 export const Articles: React.FC = () => {
   const { lang } = useLanguageContext();
@@ -28,9 +29,15 @@ export const Articles: React.FC = () => {
   return (
     <div className="bg-stone-950 py-20 min-h-screen">
       <Wrap>
-        <h1 className="p-2 mb-8 text-4xl text-neutral-50 border-b-2 border-rose-400 border-opacity-10">
+        <h1 className="p-2 text-4xl text-neutral-50">
           Top {formattedCategory} News from {lang === "GB" ? GBTitle : USTitle}:
         </h1>
+        {formattedCategory !== "" && (
+          <Link to="/categories" className="link inline-flex">
+            <ChevronLeftIcon className="h-6 w-5 hover:stroke-violet-500 mr-2" />
+            Go back to the categories
+          </Link>
+        )}
         <div className="flex flex-wrap">
           {error && <p>Error fetching data</p>}
           {isPending && skeletonArray}
@@ -46,7 +53,7 @@ export const Articles: React.FC = () => {
                     <Link
                       to="/article"
                       state={article}
-                      className="p-4 bg-stone-900 shadow hover:shadow-2xl rounded-lg h-full flex flex-col hover:cursor-pointer transition opacity-75 hover:opacity-100"
+                      className=" bg-stone-900 shadow hover:shadow-2xl rounded-lg h-full flex flex-col hover:cursor-pointer transition opacity-75 hover:opacity-100"
                     >
                       <Card
                         title={article.title}

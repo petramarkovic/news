@@ -39,7 +39,7 @@ export const Slider: React.FC<commonPropsInterface> = (props) => {
         .map((article, index) => (
           <SwiperSlide
             key={index}
-            className="self-stretch h-auto flex flex-col p-5"
+            className="self-stretch h-auto flex flex-col"
           >
             <Card
               title={article.title}
