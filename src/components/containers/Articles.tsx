@@ -30,7 +30,7 @@ export const Articles: React.FC = () => {
     <div className="bg-stone-950 py-20 min-h-screen">
       <Wrap>
         <h1 className="p-2 text-4xl text-neutral-50">
-          Top {formattedCategory} News from {lang === "GB" ? GBTitle : USTitle}:
+          Top {formattedCategory} news from {lang === "GB" ? GBTitle : USTitle}:
         </h1>
         {formattedCategory !== "" && (
           <Link to="/categories" className="link inline-flex">
