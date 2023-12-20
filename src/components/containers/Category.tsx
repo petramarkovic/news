@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArticlesArrayInterface } from '../../types'
+import { ArticleInterface } from '../../types'
 import { Button } from '../ui/Button'
 import { Slider } from './Slider'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { useLanguageContext } from '../../store/languageContext'
 
 export interface CategoryProps {
-	articles: ArticlesArrayInterface[]
+	articles: ArticleInterface[]
 	title: string
 }
 

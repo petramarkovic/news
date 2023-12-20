@@ -3,7 +3,7 @@ import { Home } from './components/pages/Home'
 import { Categories } from './components/pages/Categories'
 import { Article } from './components/pages/Article'
 import { Search } from './components/pages/Search'
-// import { Articles } from "./components/containers/Articles";
+import { Articles } from './components/containers/Articles'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './store/languageContext'
 
@@ -29,7 +29,10 @@ function App() {
 						path='/search'
 						element={<Search />}
 					/>
-					{/* <Route path="/categories/:category" element={<Articles />} /> */}
+					<Route
+						path='/categories/:category'
+						element={<Articles />}
+					/>
 				</Routes>
 			</LanguageProvider>
 		</Router>
