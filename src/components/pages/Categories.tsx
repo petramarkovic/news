@@ -1,6 +1,6 @@
 import { useLanguageContext } from "../../store/languageContext";
 import { useState, useEffect } from "react";
-import { ArticlesInterface } from "../../types";
+import { ArticlesArrayInterface } from "../../types";
 import { Wrap } from "../ui/Wrap";
 import { Category } from "../containers/Category";
 import { CategorySkeleton } from "../skeletons/CategorySkeleton";
@@ -18,12 +18,14 @@ export const Categories = () => {
     "technology",
   ];
 
-  const [categoryData, setCategoryData] = useState<ArticlesInterface[]>([]);
+  const [categoryData, setCategoryData] = useState<ArticlesArrayInterface[]>(
+    []
+  );
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchDataForCategories = async () => {
-      const dataForCategories: ArticlesInterface[] = [];
+      const dataForCategories: ArticlesArrayInterface[] = [];
 
       for (const category of categories) {
         const response = await fetch(
@@ -55,7 +57,11 @@ export const Categories = () => {
         </h1>
         {isLoading && skeletonArray}
         {categoryData.map((data, index) => (
-          <Category data={data} key={index} title={categories[index]} />
+          <Category
+            articles={data.articles}
+            key={index}
+            title={categories[index]}
+          />
         ))}
       </Wrap>
     </div>
