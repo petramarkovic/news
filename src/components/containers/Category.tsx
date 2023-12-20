@@ -4,7 +4,7 @@ import { Button } from '../ui/Button'
 import { Slider } from './Slider'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
-import { useLanguageContext } from '../../store/languageContext'
+import useArticle from '../../hooks/useArticle'
 
 export interface CategoryProps {
 	articles: ArticleInterface[]
@@ -12,7 +12,7 @@ export interface CategoryProps {
 }
 
 export const Category: React.FC<CategoryProps> = ({ articles, title }) => {
-	const { lang } = useLanguageContext()
+	const { lang } = useArticle()
 	const [isOpen, setIsOpen] = useState<boolean>(true)
 
 	const clickHandler = () => {
