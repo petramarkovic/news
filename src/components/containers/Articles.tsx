@@ -1,25 +1,15 @@
-import useFetch from '../../hooks/useFetch'
-import { useLanguageContext } from '../../store/languageContext'
-import { Link, useParams } from 'react-router-dom'
+import useArticle from '../../hooks/useArticle'
+import { Link } from 'react-router-dom'
 import { Card } from '../containers/Card'
 import { CardSkeleton } from '../skeletons/CardSkeleton'
-import { ArticlesArrayInterface } from '../../types'
 import { Wrap } from '../ui/Wrap'
 import { ChevronLeftIcon } from '@heroicons/react/24/outline'
 
 export const Articles: React.FC = () => {
-	const { lang } = useLanguageContext()
-	const key = `${process.env.REACT_APP_API_KEY}`
-	const { category } = useParams()
-	const formattedCategory = category || ''
-
-	const { data, isPending, error } = useFetch<ArticlesArrayInterface>(
-		`https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}`
-	)
+	const { data, isPending, error, formattedCategory, lang } = useArticle()
 
 	const GBTitle = 'Great Britain'
 	const USTitle = 'United States'
-
 	const removedArticle = 'Removed'
 
 	const skeletonArray = Array.from({ length: 9 }, (_, index) => (
