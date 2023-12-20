@@ -1,6 +1,6 @@
-import { ArticleInterface } from ".";
+import { ArticleInterface } from '.'
 
 export interface ArticlesArrayInterface {
-  articles: ArticleInterface[];
-  query?: string;
+	articles: ArticleInterface[]
+	query?: string
 }
