@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Button } from "../ui/Button";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 export const Navbar = () => {
@@ -12,10 +11,10 @@ export const Navbar = () => {
         <Link to="/categories" className="link">
           Categories
         </Link>
-        <Button className="link">
+        <Link to="/search" className="link">
           Search
           <MagnifyingGlassIcon className="h-4 w-4 ml-2 tex-white inline" />
-        </Button>
+        </Link>
       </ul>
     </nav>
   );

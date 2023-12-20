@@ -1,11 +1,11 @@
-import { commonPropsInterface } from "../../types";
+import { ArticlesArrayInterface } from "../../types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Card } from "./Card";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export const Slider: React.FC<commonPropsInterface> = (props) => {
+export const Slider: React.FC<ArticlesArrayInterface> = ({ articles }) => {
   const removedArticle = "Removed";
   const maxArticlesToShow = 5;
 
@@ -33,7 +33,7 @@ export const Slider: React.FC<commonPropsInterface> = (props) => {
       modules={[Navigation]}
       className="pb-10"
     >
-      {props.data.articles
+      {articles
         .filter((article) => !article.title.includes(removedArticle))
         .slice(0, maxArticlesToShow)
         .map((article, index) => (

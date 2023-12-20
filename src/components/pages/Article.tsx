@@ -2,11 +2,11 @@ import * as reactRouterDom from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Wrap } from "../ui/Wrap";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
-import { RichArticleInterface } from "../../types";
+import { ArticleInterface } from "../../types";
 
 export const Article = () => {
   const { state } = reactRouterDom.useLocation();
-  const articleData: RichArticleInterface = state;
+  const articleData: ArticleInterface = state;
 
   return (
     <div className="bg-stone-950 min-h-screen">

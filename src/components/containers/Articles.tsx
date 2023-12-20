@@ -3,7 +3,7 @@ import { useLanguageContext } from "../../store/languageContext";
 import { Link, useParams } from "react-router-dom";
 import { Card } from "../containers/Card";
 import { CardSkeleton } from "../skeletons/CardSkeleton";
-import { ArticlesInterface } from "../../types";
+import { ArticlesArrayInterface } from "../../types";
 import { Wrap } from "../ui/Wrap";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
@@ -13,7 +13,7 @@ export const Articles: React.FC = () => {
   const { category } = useParams();
   const formattedCategory = category || "";
 
-  const { data, isPending, error } = useFetch<ArticlesInterface>(
+  const { data, isPending, error } = useFetch<ArticlesArrayInterface>(
     `https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}`
   );
 
