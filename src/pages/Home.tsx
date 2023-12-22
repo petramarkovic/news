@@ -1,5 +1,5 @@
-import { Wrap } from '../ui/Wrap'
-import { Articles } from '../containers/Articles'
+import { Wrap } from '../components/ui/Wrap'
+import { Articles } from '../components/containers/Articles'
 
 export const Home = () => {
 	return (
