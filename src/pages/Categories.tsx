@@ -1,9 +1,9 @@
-import { useLanguageContext } from '../../store/languageContext'
+import { useLanguageContext } from '../store/languageContext'
 import { useState, useEffect } from 'react'
-import { ArticlesArrayInterface } from '../../types'
-import { Wrap } from '../ui/Wrap'
-import { Category } from '../containers/Category'
-import { CategorySkeleton } from '../skeletons/CategorySkeleton'
+import { ArticlesArrayInterface } from '../types'
+import { Wrap } from '../components/ui/Wrap'
+import { Category } from '../components/containers/Category'
+import { CategorySkeleton } from '../components/skeletons/CategorySkeleton'
 
 export const Categories = () => {
 	const { lang } = useLanguageContext()

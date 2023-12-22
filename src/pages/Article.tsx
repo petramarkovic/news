@@ -1,8 +1,8 @@
 import * as reactRouterDom from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { Wrap } from '../ui/Wrap'
+import { Wrap } from '../components/ui/Wrap'
 import { ChevronLeftIcon } from '@heroicons/react/24/outline'
-import { ArticleInterface } from '../../types'
+import { ArticleInterface } from '../types'
 
 export const Article = () => {
 	const { state } = reactRouterDom.useLocation()
