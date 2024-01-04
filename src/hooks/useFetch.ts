@@ -1,36 +1,38 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
 type FetchHookResults<T> = {
-	data: T | null
-	isPending: boolean
-	error: string | null
-}
+  data: T | null;
+  isPending: boolean;
+  error: string | null;
+};
 
 const useFetch = <T>(url: string): FetchHookResults<T> => {
-	const [data, setData] = useState(null)
-	const [isPending, setIsPending] = useState(true)
-	const [error, setError] = useState(null)
+  const [data, setData] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
 
-	useEffect(() => {
-		fetch(url)
-			.then((res) => {
-				if (!res.ok) {
-					throw new Error('Error fetching data')
-				}
-				return res.json()
-			})
-			.then((data) => {
-				setData(data)
-				setIsPending(false)
-				setError(null)
-			})
-			.catch((err) => {
-				setError(err.message)
-				console.log(err)
-			})
-	}, [url])
+  useEffect(() => {
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error fetching data");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setData(data);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+        console.log(err);
+      })
+      .finally(() => {
+        setIsPending(false);
+      });
+  }, [url]);
 
-	return { data, isPending, error }
-}
+  return { data, isPending, error };
+};
 
-export default useFetch
+export default useFetch;
