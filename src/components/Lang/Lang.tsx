@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useLanguageContext } from "../../store/languageContext";
+import { LanguageType, useLanguageContext } from "../../store/languageContext";
 import { Button } from "../UI/Button";
 
 export const Lang = () => {
@@ -7,7 +7,7 @@ export const Lang = () => {
   const location = useLocation();
 
   const handleLanguageChange = (newLang: string) => {
-    setLang(newLang);
+    setLang(newLang as LanguageType);
   };
 
   const shouldDisableLanguageToggle = () => {
