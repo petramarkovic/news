@@ -1,13 +1,13 @@
 import { useLanguageContext } from "../store/languageContext";
 import { useState } from "react";
 import { searchNews } from "../services/NewsService";
-import { Wrap } from "../components/ui/Wrap";
+import { Wrap } from "../components/UI/Wrap";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { ArticlesArrayInterface } from "../types";
-import { Card } from "../components/containers/Card";
+import { Card } from "../components/Card";
 import { Link } from "react-router-dom";
-import Loader from "../components/ui/Loader";
+import Loader from "../components/UI/Loader";
 
 export const Search: React.FC = () => {
   const { lang } = useLanguageContext();

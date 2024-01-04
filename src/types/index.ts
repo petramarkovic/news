@@ -1,2 +1,1 @@
-export * from './ArticlesArrayInterface'
-export * from './ArticleInterface'
+export * from "./Article";
