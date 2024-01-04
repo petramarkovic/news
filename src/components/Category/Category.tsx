@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArticleInterface } from "../../types";
-import { Button } from "../ui/Button";
-import { Slider } from "./Slider";
+import { Button } from "../UI/Button";
+import { Slider } from "./CategorySlider";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { useLanguageContext } from "../../store/languageContext";

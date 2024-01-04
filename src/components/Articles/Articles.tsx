@@ -1,8 +1,7 @@
 import useArticle from "../../hooks/useArticle";
 import { Link } from "react-router-dom";
-import { Card } from "../containers/Card";
-import { CardSkeleton } from "../skeletons/CardSkeleton";
-import { Wrap } from "../ui/Wrap";
+import { Card, CardSkeleton } from "../Card";
+import { Wrap } from "../UI/Wrap";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { useLanguageContext } from "../../store/languageContext";
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArticleInterface } from '../../types'
+import { ArticleInterface } from '../../../types'
 
 export const Card: React.FC<ArticleInterface> = ({
 	title,
