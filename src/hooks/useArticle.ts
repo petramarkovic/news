@@ -13,7 +13,7 @@ const useArticle = () => {
     `https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}`
   );
 
-  return { data, isPending, error, formattedCategory, lang };
+  return { data, isPending, error, formattedCategory };
 };
 
 export default useArticle;
