@@ -12,7 +12,9 @@ const useFetch = <T>(url: string): FetchHookResults<T> => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(url)
+    const abortCont = new AbortController();
+
+    fetch(url, { signal: abortCont.signal })
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error fetching data");
@@ -24,12 +26,17 @@ const useFetch = <T>(url: string): FetchHookResults<T> => {
         setError(null);
       })
       .catch((err) => {
-        setError(err.message);
-        console.log(err);
+        if (err.name === "AbortError") {
+          return;
+        } else {
+          setError(err.message);
+          console.log(err);
+        }
       })
       .finally(() => {
         setIsPending(false);
       });
+    return () => abortCont.abort();
   }, [url]);
 
   return { data, isPending, error };
