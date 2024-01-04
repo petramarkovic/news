@@ -1,4 +1,4 @@
-import { ArticlesArrayInterface } from "../../../types";
+import { ArticlesArrayInterface } from "../../types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Card } from "../Card";
