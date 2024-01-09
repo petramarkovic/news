@@ -7,7 +7,6 @@ import "swiper/css/navigation";
 
 export const Slider: React.FC<ArticlesArrayInterface> = ({ articles }) => {
   const removedArticle = "Removed";
-  const maxArticlesToShow = 5;
 
   const breakpoints = {
     400: {
@@ -35,7 +34,6 @@ export const Slider: React.FC<ArticlesArrayInterface> = ({ articles }) => {
     >
       {articles
         .filter((article) => !article.title.includes(removedArticle))
-        .slice(0, maxArticlesToShow)
         .map((article, index) => (
           <SwiperSlide
             key={index}
