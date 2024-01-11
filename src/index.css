@@ -6,26 +6,6 @@
 	html {
 		font-family: 'Poppins', sans-serif;
 	}
-
-	.btn {
-		@apply text-white px-4 py-4 enabled:hover:text-rose-300 font-medium;
-	}
-
-	.link {
-		@apply text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-4 mr-5 inline-flex items-center;
-	}
-
-	.active {
-		@apply bg-rose-300 text-stone-900 pointer-events-none;
-	}
-
-	.inactive {
-		@apply opacity-80;
-	}
-
-	.disabled {
-		@apply bg-stone-800 opacity-50 text-stone-400;
-	}
 }
 
 .swiper-button-prev,

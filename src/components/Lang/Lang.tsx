@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { LanguageType, useLanguageContext } from '../../store/languageContext';
 import { Button } from '../UI/Button/Button';
+import { twMerge } from 'tailwind-merge';
 
 export const Lang = () => {
 	const { lang, setLang } = useLanguageContext();
@@ -17,18 +18,34 @@ export const Lang = () => {
 	return (
 		<div className='flex'>
 			<Button
-				className={`btn ${lang === 'GB' ? 'active' : 'inactive'}${
-					shouldDisableLanguageToggle() === true ? ` disabled` : ''
-				}`}
+				className={twMerge(
+					`text-white px-4 py-4 enabled:hover:text-rose-300 font-medium ${
+						lang === 'GB'
+							? 'bg-rose-300 text-stone-900 pointer-events-none'
+							: 'opacity-80'
+					}${
+						shouldDisableLanguageToggle() === true
+							? `bg-stone-800 opacity-50 text-stone-400`
+							: ''
+					}`
+				)}
 				onClick={() => handleLanguageChange('GB')}
 				disabled={shouldDisableLanguageToggle()}
 			>
 				GB
 			</Button>
 			<Button
-				className={`btn ${lang === 'US' ? 'active' : 'inactive'}${
-					shouldDisableLanguageToggle() === true ? ` disabled` : ''
-				}`}
+				className={twMerge(
+					`text-white px-4 py-4 enabled:hover:text-rose-300 font-medium ${
+						lang === 'US'
+							? 'bg-rose-300 text-stone-900 pointer-events-none'
+							: 'opacity-80'
+					}${
+						shouldDisableLanguageToggle() === true
+							? `bg-stone-800 opacity-50 text-stone-400`
+							: ''
+					}`
+				)}
 				onClick={() => handleLanguageChange('US')}
 				disabled={shouldDisableLanguageToggle()}
 			>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Wrap } from '../components/UI/Wrap/Wrap';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { ArticleInterface } from '../types';
+import { twMerge } from 'tailwind-merge';
 
 export const Article = () => {
 	const { state } = reactRouterDom.useLocation();
@@ -32,7 +33,10 @@ export const Article = () => {
 				<div className='flex mb-6'>
 					<Link
 						to='/'
-						className='link inline-flex'
+						className={twMerge(
+							'text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-4 mr-5 inline-flex items-center',
+							'inline-flex'
+						)}
 					>
 						<ChevronLeftIcon className='h-6 w-5 hover:stroke-violet-500 mr-2' />
 						Go back to the list

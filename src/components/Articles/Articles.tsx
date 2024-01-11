@@ -4,6 +4,7 @@ import { Card, CardSkeleton } from '../Card';
 import { Wrap } from '../UI/Wrap/Wrap';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { useLanguageContext } from '../../store/languageContext';
+import { twMerge } from 'tailwind-merge';
 
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
@@ -26,7 +27,10 @@ export const Articles: React.FC = () => {
 				{formattedCategory !== '' && (
 					<Link
 						to='/categories'
-						className='link inline-flex'
+						className={twMerge(
+							`text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-4 mr-5 inline-flex items-center`,
+							'inline-flex'
+						)}
 					>
 						<ChevronLeftIcon className='h-6 w-5 hover:stroke-violet-500 mr-2' />
 						Go back to the categories

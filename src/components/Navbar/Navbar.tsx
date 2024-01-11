@@ -34,19 +34,19 @@ export const Navbar = () => {
 				</li>
 				<Link
 					to='/'
-					className='link'
+					className='text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-4 mr-5 inline-flex items-center'
 				>
 					Top News
 				</Link>
 				<Link
 					to='/categories'
-					className='link'
+					className='text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-4 mr-5 inline-flex items-center'
 				>
 					Categories
 				</Link>
 				<Link
 					to='/search'
-					className='link'
+					className='text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-4 mr-5 inline-flex items-center'
 				>
 					Search
 					<MagnifyingGlassIcon className='h-4 w-4 ml-2 tex-white inline' />
