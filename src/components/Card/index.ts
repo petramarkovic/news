@@ -1,2 +1,2 @@
-export * from "./Card";
-export * from "./Card.skeleton";
+export * from './Card';
+export * from './Card.skeleton';

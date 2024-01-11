@@ -20,5 +20,5 @@ export const CategorySkeleton = () => {
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
