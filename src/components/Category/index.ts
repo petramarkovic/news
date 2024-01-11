@@ -1,3 +1,3 @@
-export * from "./Category";
-export * from "./CategorySlider";
-export * from "./Category.skeleton";
+export * from './Category';
+export * from './CategorySlider';
+export * from './Category.skeleton';

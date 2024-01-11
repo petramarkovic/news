@@ -7,5 +7,5 @@ export const CardSkeleton = () => {
 				<div className='bg-stone-700 h-40 w-full rounded-lg animate-fadeInOut infinite'></div>
 			</div>
 		</div>
-	)
-}
+	);
+};
