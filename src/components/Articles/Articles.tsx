@@ -19,10 +19,10 @@ export const Articles: React.FC = () => {
 	));
 
 	return (
-		<div className='bg-stone-950 py-20 min-h-screen'>
+		<div className='py-20 min-h-screen'>
 			<Wrap>
-				<h1 className='p-2 text-4xl text-neutral-50'>
-					Top {formattedCategory} news from {lang === 'GB' ? GBTitle : USTitle}:
+				<h1 className='mb-8 text-3xl text-secondaryDark'>
+					Top {formattedCategory} news from {lang === 'GB' ? GBTitle : USTitle}
 				</h1>
 				{formattedCategory !== '' && (
 					<Link
@@ -51,7 +51,7 @@ export const Articles: React.FC = () => {
 										<Link
 											to='/article'
 											state={article}
-											className=' bg-stone-900 shadow hover:shadow-2xl rounded-lg h-full flex flex-col hover:cursor-pointer transition opacity-75 hover:opacity-100'
+											className='shadow rounded-lg h-full flex flex-col hover:cursor-pointer transition '
 										>
 											<Card
 												title={article.title}
