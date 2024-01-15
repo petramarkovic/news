@@ -28,6 +28,9 @@ export const Search: React.FC = () => {
 		useEffect(() => {
 			if (debouncedSearch.trim() === '') {
 				setIsLoading(false);
+				setIsEmpty(false);
+				setDisplayedQuery('');
+				setResults([]);
 				return;
 			}
 
@@ -37,12 +40,16 @@ export const Search: React.FC = () => {
 
 				if (articles && articles.length === 0) {
 					setIsEmpty(true);
-					console.log('empty');
+					setIsLoading(false);
+					setResults([]);
+					setDisplayedQuery(debouncedSearch);
+					return;
 				}
 
 				setResults(articles);
 				setIsLoading(false);
 				setDisplayedQuery(debouncedSearch);
+				setIsEmpty(false);
 			}
 
 		handleSearch();
@@ -51,6 +58,7 @@ export const Search: React.FC = () => {
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
 		setIsLoading(true);
+		setResults([]);
 	}
 
 	const handleClear = () => {
@@ -59,12 +67,12 @@ export const Search: React.FC = () => {
 	};
 
 	return (
-		<div className='bg-stone-950 py-20 min-h-screen'>
+		<div className='py-20'>
 			<Wrap>
-				<h1 className='py-2 text-3xl text-neutral-50'>
+				<h1 className='mb-8 text-3xl text-secondaryDark'>
 					Search top news from {lang}
 				</h1>
-				<div className='flex my-6 relative'>
+				<div className='flex my-20 relative'>
 					<form
 						className='w-full relative'
 					>
@@ -78,7 +86,7 @@ export const Search: React.FC = () => {
 							>
 								<MagnifyingGlassIcon
 									aria-hidden='true'
-									className='w-7 h-7 text-rose-300'
+									className='w-7 h-7 text-dark'
 								/>
 								<span className='sr-only'>Submit</span>
 							</button>
@@ -88,32 +96,32 @@ export const Search: React.FC = () => {
 				{loading && (
 					<div className='flex flex-wrap w-full'>{cardSkeletonArray}</div>
 				)}
-				{results?.length && (
+				{results?.length ? (
 					<div className='lg:flex lg:justify-between items-center mb-5'>
-						<p className='text-white text-2xl'>
+						<p className='text-dark text-2xl'>
 							All news from {lang} by term '{displayedQuery}'
 						</p>
 						<button
 							type='button'
-							className='text-white flex items-center lg:ml-6 lg:mt-0 mt-3'
+							className='text-black flex items-center lg:ml-6 lg:mt-0 mt-3 transition hover:text-primaryDark'
 							onClick={handleClear}
 						>
 							Clear
 							<XMarkIcon className='w-5 h-5' />
 						</button>
 					</div>
-				)}
-				{isEmpty && <p className='text-white text-2xl my-20 h-60 flex items-center justify-center'>There are no results for '{displayedQuery}'..</p>}
+				) : null}
+				{isEmpty && <p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>There are no search results for '{displayedQuery}'..</p>}
 				<ul className='flex flex-wrap w-full'>
 					{results?.map((article, index) => (
 						<li
 							key={index}
-							className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 self-stretch'
+							className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch'
 						>
 							<Link
 								to='/article'
 								state={article}
-								className='shadow hover:shadow-2xl rounded-lg h-full flex flex-col hover:cursor-pointer transition opacity-75 hover:opacity-100'
+								className='shadow rounded-lg h-full flex flex-col hover:cursor-pointer transition opacity-75 hover:opacity-100'
 							>
 								<Card
 									title={''}

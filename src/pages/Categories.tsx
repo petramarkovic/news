@@ -15,10 +15,10 @@ export const Categories = () => {
 	];
 
 	return (
-		<div className='bg-stone-950 py-20 min-h-screen'>
+		<div className='py-20'>
 			<Wrap>
-				<h1 className='p-2 mb-8 text-4xl text-neutral-50 border-b-2 border-rose-400 border-opacity-10'>
-					Top 5 news by categories in {lang}:
+				<h1 className='mb-8 text-3xl text-secondaryDark'>
+					Top 5 news by categories in {lang}
 				</h1>
 				{categories.map((category, index) => (
 					<Category

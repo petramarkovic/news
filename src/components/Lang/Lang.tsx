@@ -2,6 +2,8 @@ import { useLocation } from 'react-router-dom';
 import { LanguageType, useLanguageContext } from '../../store/languageContext';
 import { Button } from '../UI/Button/Button';
 import { twMerge } from 'tailwind-merge';
+import { UkIcon } from '../Icons/UkIcon';
+import { UsaIcon } from '../Icons/UsaIcon';
 
 export const Lang = () => {
 	const { lang, setLang } = useLanguageContext();
@@ -19,37 +21,23 @@ export const Lang = () => {
 		<div className='flex'>
 			<Button
 				className={twMerge(
-					`text-white px-4 py-4 enabled:hover:text-rose-300 font-medium ${
-						lang === 'GB'
-							? 'bg-rose-300 text-stone-900 pointer-events-none'
-							: 'opacity-80'
-					}${
-						shouldDisableLanguageToggle() === true
-							? `bg-stone-800 opacity-50 text-stone-400`
-							: ''
-					}`
+					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all`, lang === 'GB' ? 'pointer-events-none' : 'opacity-70' , shouldDisableLanguageToggle() === true ? 'opacity-50 text-stone-400' : ''
 				)}
 				onClick={() => handleLanguageChange('GB')}
 				disabled={shouldDisableLanguageToggle()}
 			>
 				GB
+				<UkIcon />
 			</Button>
 			<Button
 				className={twMerge(
-					`text-white px-4 py-4 enabled:hover:text-rose-300 font-medium ${
-						lang === 'US'
-							? 'bg-rose-300 text-stone-900 pointer-events-none'
-							: 'opacity-80'
-					}${
-						shouldDisableLanguageToggle() === true
-							? `bg-stone-800 opacity-50 text-stone-400`
-							: ''
-					}`
+					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all`, lang === 'US' ? 'pointer-events-none' : 'opacity-70' , shouldDisableLanguageToggle() === true ? 'opacity-50 text-stone-400' : ''
 				)}
 				onClick={() => handleLanguageChange('US')}
 				disabled={shouldDisableLanguageToggle()}
 			>
 				US
+				<UsaIcon />
 			</Button>
 		</div>
 	);
