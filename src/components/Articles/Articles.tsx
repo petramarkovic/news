@@ -28,7 +28,7 @@ export const Articles: React.FC = () => {
 					<Link
 						to='/categories'
 						className={twMerge(
-							`text-sm font-light text-stone-50 transition ease-in-out lowercase hover:text-rose-300 py-4 mr-5 inline-flex items-center`,
+							`text-sm font-light text-secondary transition ease-in-out lowercase hover:text-dark py-4 mr-5 inline-flex items-center`,
 							'inline-flex'
 						)}
 					>
