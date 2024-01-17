@@ -15,7 +15,28 @@ export const Navbar = () => {
 
 	const menuHandler = () => {
 		setIsActive((prevState) => !prevState);
+		updateOverflow();
 	};
+
+	const navLinkClickHandler = () => {
+		if (window.innerWidth < 1024) {
+			setIsActive((prevState) => !prevState);
+			updateOverflow();
+		} else {
+			return;
+		}
+	}
+
+	const updateOverflow = () => {
+		const bodyElement = document.querySelector('body');
+		if (bodyElement) {
+			if (isActive) {
+				bodyElement.style.overflow = 'hidden';
+			} else {
+				bodyElement.style.overflow = 'visible';
+			}
+		}
+	}
 
 	return (
 		<nav className={`ml-auto ${isActive ? 'nav--active' : ''}`}>
@@ -41,18 +62,21 @@ export const Navbar = () => {
 				<Link
 					to='/'
 					className={twMerge(` text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl `, isLinkActive('/') && `text-ternaryDark`)}
+					onClick={navLinkClickHandler}
 				>
 					Top News
 				</Link>
 				<Link
 					to='/categories'
 					className={twMerge(` text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl`, isLinkActive('/categories') && `text-ternaryDark`)}
+					onClick={navLinkClickHandler}
 				>
 					Categories
 				</Link>
 				<Link
 					to='/search'
 					className={twMerge(` text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl`, isLinkActive('/search') && `text-ternaryDark`)}
+					onClick={navLinkClickHandler}
 				>
 					Search
 					<MagnifyingGlassIcon className='lg:h-4 lg:w-4 ml-2 tex-white inline w-7 h-7' />

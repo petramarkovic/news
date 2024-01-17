@@ -7,7 +7,7 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 import { ArticlesArrayInterface } from '../types';
 import { Card, CardSkeleton } from '../components/Card';
 import { Input } from '../components/Input';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Loader from '../components/UI/Loader/Loader';
 import { useDebounce } from '../hooks/useDebounce';
 
@@ -18,6 +18,7 @@ export const Search: React.FC = () => {
 	const [loading, setIsLoading] = useState<boolean>(false);
 	const [results, setResults] = useState<ArticlesArrayInterface[]>();
 	const [isEmpty, setIsEmpty] = useState<boolean>(false);
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	const debouncedSearch = useDebounce(query);
 	
@@ -59,6 +60,7 @@ export const Search: React.FC = () => {
 		setQuery(e.target.value);
 		setIsLoading(true);
 		setResults([]);
+		setSearchParams({query: e.target.value });
 	}
 
 	const handleClear = () => {
