@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { Button } from '../UI/Button/Button';
@@ -7,11 +7,6 @@ import { twMerge } from 'tailwind-merge';
 
 export const Navbar = () => {
 	const [isActive, setIsActive] = useState(true);
-	const location = useLocation();
-
-	const isLinkActive = (pathname: string) => {
-		return location.pathname === pathname;
-	};
 
 	const menuHandler = () => {
 		setIsActive((prevState) => !prevState);
@@ -22,19 +17,18 @@ export const Navbar = () => {
 		if (window.innerWidth < 1024) {
 			setIsActive((prevState) => !prevState);
 			updateOverflow();
-		} else {
-			return;
 		}
 	}
 
 	const updateOverflow = () => {
 		const bodyElement = document.querySelector('body');
-		if (bodyElement) {
-			if (isActive) {
-				bodyElement.style.overflow = 'hidden';
-			} else {
-				bodyElement.style.overflow = 'visible';
-			}
+
+		if (!bodyElement) return;
+
+		if (isActive) {
+			bodyElement.style.overflow = 'hidden';
+		} else {
+			bodyElement.style.overflow = 'visible';
 		}
 	}
 
@@ -59,28 +53,28 @@ export const Navbar = () => {
 						<XMarkIcon className='w-6 h-6 text-dark' />
 					</Button>
 				</li>
-				<Link
+				<NavLink
 					to='/'
-					className={twMerge(` text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl `, isLinkActive('/') && `text-ternaryDark`)}
+					className={({ isActive }) => twMerge('text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl', isActive && 'text-ternaryDark')}
 					onClick={navLinkClickHandler}
 				>
 					Top News
-				</Link>
-				<Link
+				</NavLink>
+				<NavLink
 					to='/categories'
-					className={twMerge(` text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl`, isLinkActive('/categories') && `text-ternaryDark`)}
+					className={({ isActive }) => twMerge('text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl', isActive && 'text-ternaryDark')}
 					onClick={navLinkClickHandler}
 				>
 					Categories
-				</Link>
-				<Link
+				</NavLink>
+				<NavLink
 					to='/search'
-					className={twMerge(` text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl`, isLinkActive('/search') && `text-ternaryDark`)}
+					className={({ isActive }) => twMerge('text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl', isActive && 'text-ternaryDark')}
 					onClick={navLinkClickHandler}
 				>
 					Search
 					<MagnifyingGlassIcon className='lg:h-4 lg:w-4 ml-2 tex-white inline w-7 h-7' />
-				</Link>
+				</NavLink>
 			</ul>
 		</nav>
 	);
