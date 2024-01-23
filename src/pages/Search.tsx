@@ -18,6 +18,7 @@ export const Search: React.FC = () => {
 	const [loading, setIsLoading] = useState<boolean>(false);
 	const [results, setResults] = useState<ArticlesArrayInterface[]>();
 	const [isEmpty, setIsEmpty] = useState<boolean>(false);
+	const [error, setError] = useState<string | null>(null);
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const debouncedSearch = useDebounce(query);
@@ -32,25 +33,35 @@ export const Search: React.FC = () => {
 				setIsEmpty(false);
 				setDisplayedQuery('');
 				setResults([]);
+				setError(null);
 				return;
 			}
 
 			const handleSearch = async () => {
 
-				const articles = await searchNews(debouncedSearch, lang);
-
-				if (articles && articles.length === 0) {
-					setIsEmpty(true);
+				try {
+					const articles = await searchNews(debouncedSearch, lang);
+	
+					if (articles && articles.length === 0) {
+						setIsEmpty(true);
+						setIsLoading(false);
+						setResults([]);
+						setDisplayedQuery(debouncedSearch);
+						setError(null);
+						return;
+					}
+	
+					setResults(articles);
+					setIsLoading(false);
+					setDisplayedQuery(debouncedSearch);
+					setIsEmpty(false);
+					setError(null);
+				} catch (error) {
 					setIsLoading(false);
 					setResults([]);
-					setDisplayedQuery(debouncedSearch);
-					return;
+					setError('Failed to fetch news. Please try again.')
 				}
 
-				setResults(articles);
-				setIsLoading(false);
-				setDisplayedQuery(debouncedSearch);
-				setIsEmpty(false);
 			}
 
 		handleSearch();
@@ -97,7 +108,7 @@ export const Search: React.FC = () => {
 				</div>
 				{loading && (
 					<div className='flex flex-wrap w-full'>{cardSkeletonArray}</div>
-				)}
+					)}
 				{results?.length ? (
 					<div className='lg:flex lg:justify-between items-center mb-5'>
 						<p className='text-dark text-2xl'>
@@ -107,12 +118,13 @@ export const Search: React.FC = () => {
 							type='button'
 							className='text-black flex items-center lg:ml-6 lg:mt-0 mt-3 transition hover:text-primaryDark'
 							onClick={handleClear}
-						>
+							>
 							Clear
 							<XMarkIcon className='w-5 h-5' />
 						</button>
 					</div>
 				) : null}
+				{error && <p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>Something went wrong.. Please try again.</p>}
 				{isEmpty && <p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>There are no search results for '{displayedQuery}'..</p>}
 				<ul className='flex flex-wrap w-full'>
 					{results?.map((article, index) => (
