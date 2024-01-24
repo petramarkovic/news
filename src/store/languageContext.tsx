@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createContext, useContext } from 'react';
 
 export type LanguageType = 'GB' | 'US';
@@ -21,12 +21,18 @@ export const LanguageContext =
 	createContext<LanguageContextInterface>(LanguageInitialState);
 
 export const LanguageProvider: React.FC<childrenProps> = (props) => {
-	const [lang, setLang] = useState<LanguageType>('GB');
+	const storedLang = localStorage.getItem('selectedLanguage');
+	const initialLang: LanguageType = storedLang ? (storedLang as LanguageType) : 'GB';
+	const [lang, setLang] = useState<LanguageType>(initialLang);
 
 	const contextValue: LanguageContextInterface = {
 		lang,
 		setLang
 	};
+
+	useEffect(() => {
+		localStorage.setItem('selectedLanguage', lang);
+	}, [lang]);
 
 	return (
 		<LanguageContext.Provider value={contextValue}>
