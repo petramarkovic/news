@@ -20,63 +20,68 @@ export const Search: React.FC = () => {
 	const [isEmpty, setIsEmpty] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
 	const [searchParams, setSearchParams] = useSearchParams();
-
 	const debouncedSearch = useDebounce(query);
-	
+
 	const cardSkeletonArray = Array.from({ length: 9 }, (_, index) => (
 		<CardSkeleton key={index} />
 	));
-		
-		useEffect(() => {
-			if (debouncedSearch.trim() === '') {
-				setIsLoading(false);
-				setIsEmpty(false);
-				setDisplayedQuery('');
-				setResults([]);
-				setError(null);
-				return;
-			}
 
-			const handleSearch = async () => {
+	useEffect(() => {
+		const initialQuery = searchParams.get('query') ?? '';
 
-				try {
-					const articles = await searchNews(debouncedSearch, lang);
-	
-					if (articles && articles.length === 0) {
-						setIsEmpty(true);
-						setIsLoading(false);
-						setResults([]);
-						setDisplayedQuery(debouncedSearch);
-						setError(null);
-						return;
-					}
-	
-					setResults(articles);
-					setIsLoading(false);
-					setDisplayedQuery(debouncedSearch);
-					setIsEmpty(false);
-					setError(null);
-				} catch (error) {
-					setIsLoading(false);
+		const handleSearch = async () => {
+			try {
+				const articles = await searchNews(
+					initialQuery || debouncedSearch,
+					lang
+				);
+
+				if (articles && articles.length === 0) {
+					setIsEmpty(true);
 					setResults([]);
-					setError('Failed to fetch news. Please try again.')
+					setDisplayedQuery(initialQuery || debouncedSearch);
+					setError(null);
+					return;
 				}
 
+				setResults(articles);
+				setDisplayedQuery(initialQuery || debouncedSearch);
+				setIsEmpty(false);
+				setError(null);
+				
+			} catch (error) {
+				setResults([]);
+				setError('Failed to fetch news. Please try again.');
+			} finally {
+				setIsLoading(false);
 			}
+		};
 
-		handleSearch();
+		if (initialQuery) {
+			setQuery(initialQuery);
+			handleSearch();
+		} else if (debouncedSearch.trim() !== '') {
+			setIsLoading(true);
+			handleSearch();
+		} else {
+			setIsLoading(false);
+			setIsEmpty(false);
+			setResults([]);
+			setError(null);
+		}
 	}, [debouncedSearch]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
 		setIsLoading(true);
 		setResults([]);
-		setSearchParams({query: e.target.value });
-	}
+		setSearchParams({ query: e.target.value });
+	};
 
 	const handleClear = () => {
 		setResults([]);
 		setQuery('');
+		setSearchParams('');
 	};
 
 	return (
@@ -86,10 +91,14 @@ export const Search: React.FC = () => {
 					Search top news from {lang}
 				</h1>
 				<div className='flex my-20 relative'>
-					<form
-						className='w-full relative'
-					>
-						<Input label="Start typing to search news .." value={query} onChange={handleInputChange} name='search' type='text'/>
+					<form className='w-full relative'>
+						<Input
+							label='Start typing to search news ..'
+							value={query}
+							onChange={handleInputChange}
+							name='search'
+							type='text'
+						/>
 						{loading ? (
 							<Loader />
 						) : (
@@ -108,7 +117,7 @@ export const Search: React.FC = () => {
 				</div>
 				{loading && (
 					<div className='flex flex-wrap w-full'>{cardSkeletonArray}</div>
-					)}
+				)}
 				{results?.length ? (
 					<div className='lg:flex lg:justify-between items-center mb-5'>
 						<p className='text-dark text-2xl'>
@@ -118,14 +127,22 @@ export const Search: React.FC = () => {
 							type='button'
 							className='text-black flex items-center lg:ml-6 lg:mt-0 mt-3 transition hover:text-primaryDark'
 							onClick={handleClear}
-							>
+						>
 							Clear
 							<XMarkIcon className='w-5 h-5' />
 						</button>
 					</div>
 				) : null}
-				{error && <p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>Something went wrong.. Please try again.</p>}
-				{isEmpty && <p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>There are no search results for '{displayedQuery}'..</p>}
+				{error && (
+					<p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>
+						Something went wrong.. Please try again.
+					</p>
+				)}
+				{isEmpty && (
+					<p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>
+						There are no search results for '{displayedQuery}'..
+					</p>
+				)}
 				<ul className='flex flex-wrap w-full'>
 					{results?.map((article, index) => (
 						<li
