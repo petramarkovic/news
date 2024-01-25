@@ -48,10 +48,10 @@ export const Search: React.FC = () => {
 				setDisplayedQuery(initialQuery || debouncedSearch);
 				setIsEmpty(false);
 				setError(null);
-				
-			} catch (error) {
+
+			} catch (error : any) {
 				setResults([]);
-				setError('Failed to fetch news. Please try again.');
+				setError(error?.message || 'Failed to fetch news. Please try again.');
 			} finally {
 				setIsLoading(false);
 			}
