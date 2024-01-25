@@ -11,7 +11,7 @@ export const searchNews = async (query: string, lang: string) => {
 		}
 		const data: { articles: ArticlesArrayInterface[] } = await response.json();
 		return data.articles;
-	} catch (error) {
-		throw new Error('Something went wrong..');
+	} catch (error : any) {
+		throw new Error(error?.message || 'Something went wrong..');
 	}
 };
