@@ -1,8 +1,12 @@
 import { useLanguageContext } from '../store/languageContext';
 import { Wrap } from '../components/UI/Wrap/Wrap';
 import { Category } from '../components/Category';
+import { useTranslation } from 'react-i18next';
 
 export const Categories = () => {
+	const { t } = useTranslation();
+	const GBTitle = t('greatBritain');
+	const USTitle = t('unitedStates');
 	const { lang } = useLanguageContext();
 	const categories = [
 		'business',
@@ -18,7 +22,7 @@ export const Categories = () => {
 		<div className='py-20'>
 			<Wrap>
 				<h1 className='mb-8 text-3xl text-secondaryDark'>
-					Top 5 news by categories in {lang}
+					{t('categoriesHeadline')} {lang === 'GB' ? GBTitle : USTitle}
 				</h1>
 				{categories.map((category, index) => (
 					<Category

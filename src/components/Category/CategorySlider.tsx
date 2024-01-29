@@ -2,11 +2,13 @@ import { ArticlesArrayInterface } from '../../types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Card } from '../Card';
+import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 export const Slider: React.FC<ArticlesArrayInterface> = ({ articles }) => {
-	const removedArticle = 'Removed';
+	const { t } = useTranslation();
+	const removedArticle = t('removed');
 
 	const breakpoints = {
 		400: {

@@ -10,6 +10,7 @@ import { Input } from '../components/Input';
 import { Link, useSearchParams } from 'react-router-dom';
 import Loader from '../components/UI/Loader/Loader';
 import { useDebounce } from '../hooks/useDebounce';
+import { useTranslation } from 'react-i18next';
 
 export const Search: React.FC = () => {
 	const { lang } = useLanguageContext();
@@ -21,6 +22,10 @@ export const Search: React.FC = () => {
 	const [error, setError] = useState<string | null>(null);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const debouncedSearch = useDebounce(query);
+	const { t } = useTranslation();
+
+	const GBTitle = t('greatBritain');
+	const USTitle = t('unitedStates');
 
 	const cardSkeletonArray = Array.from({ length: 9 }, (_, index) => (
 		<CardSkeleton key={index} />
@@ -88,12 +93,12 @@ export const Search: React.FC = () => {
 		<div className='py-20'>
 			<Wrap>
 				<h1 className='mb-8 text-3xl text-secondaryDark'>
-					Search top news from {lang}
+					{t('searchHeadline')} {lang === 'GB' ? GBTitle : USTitle}
 				</h1>
 				<div className='flex my-20 relative'>
 					<form className='w-full relative'>
 						<Input
-							label='Start typing to search news ..'
+							label={t('searchInputLabel')}
 							value={query}
 							onChange={handleInputChange}
 							name='search'
@@ -121,26 +126,26 @@ export const Search: React.FC = () => {
 				{results?.length ? (
 					<div className='lg:flex lg:justify-between items-center mb-5'>
 						<p className='text-dark text-2xl'>
-							All news from {lang} by term '{displayedQuery}'
+							{t('allNewsFrom')} {lang === 'GB' ? GBTitle : USTitle} {t('byTerm')} '{displayedQuery}'
 						</p>
 						<button
 							type='button'
 							className='text-black flex items-center lg:ml-6 lg:mt-0 mt-3 transition hover:text-primaryDark'
 							onClick={handleClear}
 						>
-							Clear
+							{t('clearButton')}
 							<XMarkIcon className='w-5 h-5' />
 						</button>
 					</div>
 				) : null}
 				{error && (
 					<p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>
-						Something went wrong.. Please try again.
+						{t('somethingWentWrong')}
 					</p>
 				)}
 				{isEmpty && (
 					<p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>
-						There are no search results for '{displayedQuery}'..
+						{t('noSearchResults')} '{displayedQuery}'..
 					</p>
 				)}
 				<ul className='flex flex-wrap w-full'>

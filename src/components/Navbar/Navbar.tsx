@@ -4,8 +4,10 @@ import { useState } from 'react';
 import { Button } from '../UI/Button/Button';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { twMerge } from 'tailwind-merge';
+import { useTranslation } from 'react-i18next';
 
 export const Navbar = () => {
+	const { t } = useTranslation();
 	const [isActive, setIsActive] = useState(true);
 
 	const menuHandler = () => {
@@ -58,21 +60,21 @@ export const Navbar = () => {
 					className={({ isActive }) => twMerge('text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl', isActive && 'text-ternaryDark')}
 					onClick={navLinkClickHandler}
 				>
-					Top News
+					{t('navigation.topNews')}
 				</NavLink>
 				<NavLink
 					to='/categories'
 					className={({ isActive }) => twMerge('text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl', isActive && 'text-ternaryDark')}
 					onClick={navLinkClickHandler}
 				>
-					Categories
+					{t('navigation.categories')}
 				</NavLink>
 				<NavLink
 					to='/search'
 					className={({ isActive }) => twMerge('text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl', isActive && 'text-ternaryDark')}
 					onClick={navLinkClickHandler}
 				>
-					Search
+					{t('navigation.search')}
 					<MagnifyingGlassIcon className='lg:h-4 lg:w-4 ml-2 tex-white inline w-7 h-7' />
 				</NavLink>
 			</ul>
