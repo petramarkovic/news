@@ -63,12 +63,69 @@ i18next
 					writtenBy: 'Écrit par',
 					goBackToTheList: 'Revenir à la liste',
 					searchHeadline: 'Rechercher les principales actualités de',
-					searchInputLabel: 'Commencez à taper pour rechercher des actualités ..',
+					searchInputLabel:
+						'Commencez à taper pour rechercher des actualités ..',
 					allNewsFrom: 'Toutes les nouvelles de',
 					byTerm: 'par terme',
-					somethingWentWrong: 'Une erreur s\'est produite. Veuillez réessayer.',
-					noSearchResults: 'Il n\'y a aucun résultat de recherche pour',
+					somethingWentWrong: "Une erreur s'est produite. Veuillez réessayer.",
+					noSearchResults: "Il n'y a aucun résultat de recherche pour",
 					clearButton: 'Clair'
+				}
+			},
+			es: {
+				translation: {
+					logo: 'Noticias',
+					navigation: {
+						topNews: 'noticias principales',
+						categories: 'categorías',
+						search: 'búsqueda'
+					},
+					mainHeadline: 'Noticias principales de',
+					categoriesHeadline: 'Top 5 noticias por categorías en',
+					greatBritain: 'Gran Bretaña',
+					unitedStates: 'Estados Unidos',
+					removed: 'Eliminado',
+					goBackButtonCategories: 'Volver a las categorías',
+					errorFetchingData: 'Error al obtener datos',
+					seeAllNewsFromCategory: 'Ver todas las noticias de',
+					writtenBy: 'Escrito por',
+					goBackToTheList: 'Volver a la lista',
+					searchHeadline: 'Buscar las principales noticias de',
+					searchInputLabel: 'Comience a escribir para buscar noticias...',
+					allNewsFrom: 'Todas las noticias de',
+					byTerm: 'por término',
+					somethingWentWrong:
+						'Algo salió mal... Por favor, inténtelo de nuevo.',
+					noSearchResults: 'No hay resultados de búsqueda para',
+					clearButton: 'Limpiar'
+				}
+			},
+			de: {
+				translation: {
+					logo: 'Nachrichten',
+					navigation: {
+						topNews: 'Top-Nachrichten',
+						categories: 'Kategorien',
+						search: 'Suche'
+					},
+					mainHeadline: 'Top-Nachrichten aus',
+					categoriesHeadline: 'Top 5 Nachrichten nach Kategorien in',
+					greatBritain: 'Großbritannien',
+					unitedStates: 'Vereinigte Staaten',
+					removed: 'Entfernt',
+					goBackButtonCategories: 'Zurück zu den Kategorien',
+					errorFetchingData: 'Fehler beim Abrufen der Daten',
+					seeAllNewsFromCategory: 'Alle Nachrichten anzeigen von',
+					writtenBy: 'Verfasst von',
+					goBackToTheList: 'Zurück zur Liste',
+					searchHeadline: 'Suche Top-Nachrichten aus',
+					searchInputLabel: 'Geben Sie ein, um Nachrichten zu suchen...',
+					allNewsFrom: 'Alle Nachrichten aus',
+					byTerm: 'nach Begriff',
+					somethingWentWrong:
+						'Etwas ist schief gelaufen... Bitte versuchen Sie es erneut.',
+					noSearchResults: 'Es gibt keine Suchergebnisse für',
+					clearButton: 'Löschen'
 				}
 			}
 		}
