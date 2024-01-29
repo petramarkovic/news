@@ -29,16 +29,17 @@ export const Translations = () => {
 
 	return (
 		<div className='relative flex justify-center items-center ml-2'>
-			<button onClick={showTranslationsHandler} className='transition hover:opacity-80'>
+			<button type='button' onClick={showTranslationsHandler} className='transition hover:opacity-80'>
 				<GlobeAltIcon className='w-6 h-6'/>
 			</button>
 			<ul className={twMerge('absolute top-5 shadow-lg max-w-min p-3 mt-2 rounded-md transition', !showTranslations ? 'opacity-0 hidden' : 'opacity-100')}>
 				{Object.keys(lngs).map(lng => (
 					<li key={lng}>
-						<button onClick={() => {
+						<button className='transition hover:opacity-80' type='button' onClick={() => {
 						i18n.changeLanguage(lng)
 						setShowTranslations(false)}}>
 						{lngs[lng].icon}
+							<span className='sr-only'>{lngs[lng].nativeName}</span>
 						</button>
 					</li>
 				))}
