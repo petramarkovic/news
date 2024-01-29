@@ -4,10 +4,12 @@ import { Wrap } from '../components/UI/Wrap/Wrap';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { ArticleInterface } from '../types';
 import { twMerge } from 'tailwind-merge';
+import { useTranslation } from 'react-i18next';
 
 export const Article = () => {
 	const { state } = reactRouterDom.useLocation();
 	const articleData: ArticleInterface = state;
+	const { t } = useTranslation();
 
 	return (
 		<div className='min-h-screen'>
@@ -26,7 +28,7 @@ export const Article = () => {
 							{articleData.content ?? 'Text unavailable.'}
 						</p>
 						<p className='text-dark w-full text-center text-lg mt-5 font-semibold'>
-							Written by {articleData.author}
+							{t('writtenBy')} {articleData.author}
 						</p>
 					</div>
 				</article>
@@ -39,7 +41,7 @@ export const Article = () => {
 						)}
 					>
 						<ChevronLeftIcon className='h-6 w-5 hover:stroke-violet-500 mr-2' />
-						Go back to the list
+						{t('goBackToTheList')}
 					</Link>
 				</div>
 			</Wrap>

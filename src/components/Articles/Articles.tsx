@@ -5,24 +5,28 @@ import { Wrap } from '../UI/Wrap/Wrap';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { useLanguageContext } from '../../store/languageContext';
 import { twMerge } from 'tailwind-merge';
+import { useTranslation } from 'react-i18next';
 
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { data, isPending, error, formattedCategory } = useArticle();
+	const { t } = useTranslation();
 
-	const GBTitle = 'Great Britain';
-	const USTitle = 'United States';
-	const removedArticle = 'Removed';
+	const GBTitle = t('greatBritain');
+	const USTitle = t('unitedStates');
+	const removedArticle = t('removed');
+
 
 	const skeletonArray = Array.from({ length: 9 }, (_, index) => (
 		<CardSkeleton key={index} />
 	));
 
+
 	return (
 		<div className='py-20 min-h-screen'>
 			<Wrap>
 				<h1 className='mb-8 text-3xl text-secondaryDark'>
-					Top {formattedCategory} news from {lang === 'GB' ? GBTitle : USTitle}
+					{t('mainHeadline')} {formattedCategory} {lang === 'GB' ? GBTitle : USTitle}
 				</h1>
 				{formattedCategory !== '' && (
 					<Link
@@ -33,11 +37,11 @@ export const Articles: React.FC = () => {
 						)}
 					>
 						<ChevronLeftIcon className='h-6 w-5 hover:stroke-violet-500 mr-2' />
-						Go back to the categories
+						{t('goBackButtonCategories')}
 					</Link>
 				)}
 				<div className='flex flex-wrap'>
-					{error && <p>Error fetching data</p>}
+					{error && <p>{t('errorFetchingData')}</p>}
 					{isPending && skeletonArray}
 					{data && (
 						<div className='flex flex-wrap w-full'>

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useLanguageContext } from '../../store/languageContext';
 import { CategorySkeleton } from '.';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { useTranslation } from 'react-i18next';
 
 export interface CategoryProps {
 	category: string;
@@ -16,6 +17,10 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 	const { lang } = useLanguageContext();
 	const key = `${process.env.REACT_APP_API_KEY}`;
 	const pageSize = 5;
+	const { t } = useTranslation();
+
+	const GBTitle = t('greatBritain');
+	const USTitle = t('unitedStates');
 
 	const [categoryData, setCategoryData] = useState<ArticleInterface[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -68,7 +73,7 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 					className='text-secondaryDark font-medium py-2 px-4 mt-3 mr-auto rounded-lg flex justify-start items-center pl-0 transition hover:text-dark'
 					to={`/categories/${category}`}
 				>
-					See all {category} news from {lang}
+					{t('seeAllNewsFromCategory')} {category} {lang === 'GB' ? GBTitle : USTitle}
 					<ChevronRightIcon className='w-5 h-5'/>
 				</Link>
 			</div>
