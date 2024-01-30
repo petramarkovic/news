@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export const Article = () => {
 	const { state } = reactRouterDom.useLocation();
+	// TODO Destructure articleData
 	const articleData: ArticleInterface = state;
 	const { t } = useTranslation();
 

@@ -16,6 +16,7 @@ export const Navbar = () => {
 	};
 
 	const navLinkClickHandler = () => {
+		// TODO Create useMedia hook
 		if (window.innerWidth < 1024) {
 			setIsActive((prevState) => !prevState);
 			updateOverflow();

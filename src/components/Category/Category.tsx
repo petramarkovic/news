@@ -13,6 +13,13 @@ export interface CategoryProps {
 	category: string;
 }
 
+/*
+	TODO
+	Create `useCategory` hook and move logic from Category.tsx. 
+	Also, eslint shows that useEffect is missing a `key` as deps. 
+	This happens because key is declared inside of a component, you can move it outside.
+*/
+
 export const Category: React.FC<CategoryProps> = ({ category }) => {
 	const { lang } = useLanguageContext();
 	const key = `${process.env.REACT_APP_API_KEY}`;
@@ -56,12 +63,14 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 					onClick={clickHandler}
 				>
 					{category}
+					{/* TODO Use positive conditions when possible */}
 					{!isOpen ? (
 						<ChevronDownIcon className='w-5 h-5' />
 					) : (
 						<ChevronUpIcon className='w-5 h-5' />
 					)}
 				</Button>
+				{/* TODO Create function or new component for handling these conditions with early exit approach */}
 				{isOpen ? (
 					categoryData?.length ? (
 						<Slider articles={categoryData} />
@@ -73,8 +82,8 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 					className='text-secondaryDark font-medium py-2 px-4 mt-3 mr-auto rounded-lg flex justify-start items-center pl-0 transition hover:text-dark'
 					to={`/categories/${category}`}
 				>
-					{t('seeAllNewsFromCategory')} {category} {lang === 'GB' ? GBTitle : USTitle}
-					<ChevronRightIcon className='w-5 h-5'/>
+					See all {category} news from {lang}
+					<ChevronRightIcon className='w-5 h-5' />
 				</Link>
 			</div>
 		</>
