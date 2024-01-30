@@ -18,6 +18,9 @@ export default {
 				ternary: '#6e5277',
 				ternaryDark: '#594360',
 				dark: '#3c2942'
+			},
+			height: {
+				'40': '40rem'
 			}
 		},
 	},

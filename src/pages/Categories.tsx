@@ -21,7 +21,7 @@ export const Categories = () => {
 	return (
 		<div className='py-20'>
 			<Wrap>
-				<h1 className='mb-8 text-3xl text-secondaryDark'>
+				<h1 className='text-3xl text-secondaryDark uppercase mb-8'>
 					{t('categoriesHeadline')} {lang === 'GB' ? GBTitle : USTitle}
 				</h1>
 				{categories.map((category, index) => (
