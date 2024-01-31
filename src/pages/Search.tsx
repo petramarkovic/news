@@ -74,7 +74,7 @@ export const Search: React.FC = () => {
 			setResults([]);
 			setError(null);
 		}
-	}, [debouncedSearch]);
+	}, [debouncedSearch, lang, searchParams]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);

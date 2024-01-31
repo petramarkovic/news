@@ -1,16 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createContext, useContext } from 'react';
-
-export type LanguageType = 'GB' | 'US';
-
-export interface LanguageContextInterface {
-	lang: LanguageType;
-	setLang(value: LanguageType): void;
-}
-
-export interface childrenProps {
-	children: React.ReactNode;
-}
+import { LanguageContextInterface, childrenProps, LanguageType } from '../types';
 
 const LanguageInitialState: LanguageContextInterface = {
 	lang: 'GB',
