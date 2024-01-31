@@ -8,7 +8,8 @@ import { useTranslation } from 'react-i18next';
 
 export const Article = () => {
 	const { state } = reactRouterDom.useLocation();
-	const articleData: ArticleInterface = state;
+	// TODO Destructure articleData
+	const { title, urlToImage, description, content, author }: ArticleInterface = state;
 	const { t } = useTranslation();
 
 	return (
@@ -16,19 +17,19 @@ export const Article = () => {
 			<Wrap>
 				<article className='pt-20'>
 					<h1 className='text-4xl text-dark text-center font-bold mb-10'>
-						{articleData.title}
+						{title}
 					</h1>
 					<div className='lg:flex mb-10 lg:flex-wrap'>
 						<img
 							className='object-cover max-w-full w-full m-auto rounded-lg shadow-2xl'
-							src={articleData.urlToImage}
-							alt={articleData.description}
+							src={urlToImage}
+							alt={description}
 						/>
 						<p className='text-dark font-medium text-base text-center max-w-2xl py-10 w-full m-auto px-3'>
-							{articleData.content ?? 'Text unavailable.'}
+							{content ?? 'Text unavailable.'}
 						</p>
 						<p className='text-dark w-full text-center text-lg mt-5 font-semibold'>
-							{t('writtenBy')} {articleData.author}
+							{t('writtenBy')} {author}
 						</p>
 					</div>
 				</article>

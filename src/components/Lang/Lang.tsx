@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import { LanguageType, useLanguageContext } from '../../store/languageContext';
+import { LanguageType } from '../../types';
+import { useLanguageContext } from '../../store/languageContext';
 import { Button } from '../UI/Button/Button';
 import { twMerge } from 'tailwind-merge';
 import { UkIcon } from '../Icons/UkIcon';

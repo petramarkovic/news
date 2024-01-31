@@ -74,7 +74,7 @@ export const Search: React.FC = () => {
 			setResults([]);
 			setError(null);
 		}
-	}, [debouncedSearch]);
+	}, [debouncedSearch, lang, searchParams]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
@@ -92,7 +92,7 @@ export const Search: React.FC = () => {
 	return (
 		<div className='py-20'>
 			<Wrap>
-				<h1 className='mb-8 text-3xl text-secondaryDark'>
+				<h1 className='mb-8 text-3xl text-secondaryDark uppercase'>
 					{t('searchHeadline')} {lang === 'GB' ? GBTitle : USTitle}
 				</h1>
 				<div className='flex my-20 relative'>
