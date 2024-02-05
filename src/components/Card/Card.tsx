@@ -18,7 +18,9 @@ export const Card: React.FC<ArticleInterface> = ({
 					/>
 				</div>
 			</div>
-			<h3 className='text-darkTernary font-semibold relative z-10 p-6'>{title}</h3>
+			<h3 className='text-darkTernary font-semibold relative z-10 p-6'>
+				{title}
+			</h3>
 		</>
 	);
 };

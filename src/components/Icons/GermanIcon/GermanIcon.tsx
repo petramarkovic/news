@@ -9,8 +9,7 @@ export const GermanIcon: React.FC<GermanIconProps> = () => {
 			xmlSpace='preserve'
 			viewBox='0 0 512 512'
 			width={22}
-			height={20}
-		>
+			height={20}>
 			<path
 				d='M473.655 88.276H38.345C17.167 88.276 0 105.443 0 126.621v73.471h512v-73.471c0-21.178-17.167-38.345-38.345-38.345z'
 				style={{

@@ -9,8 +9,7 @@ export const FranceIcon: React.FC<FranceIconProps> = () => {
 			xmlSpace='preserve'
 			viewBox='0 0 512 512'
 			width={22}
-			height={20}
-		>
+			height={20}>
 			<path
 				d='M38.345 88.273C17.167 88.273 0 105.44 0 126.618v258.759c0 21.177 17.167 38.345 38.345 38.345h132.322V88.273H38.345z'
 				style={{

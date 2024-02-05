@@ -9,8 +9,7 @@ export const SpanishIcon: React.FC<SpanishIconProps> = () => {
 			xmlSpace='preserve'
 			viewBox='0 0 496 496'
 			width={22}
-			height={20}
-		>
+			height={20}>
 			<path
 				d='M0 304.8v64.8c0 27.2 21.6 48.8 48 48.8h400c26.4 0 48-21.6 48-48.8v-64.8H0z'
 				style={{

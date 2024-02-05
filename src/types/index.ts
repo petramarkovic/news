@@ -1,3 +1,3 @@
-export * from "./Article";
+export * from './Article';
 export * from './Language';
 export * from './Category';

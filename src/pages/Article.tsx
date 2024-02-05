@@ -39,8 +39,7 @@ export const Article = () => {
 						className={twMerge(
 							'text-sm font-bold text-secondary transition ease-in-out lowercase hover:text-dark py-4 mr-5 inline-flex items-center',
 							'inline-flex'
-						)}
-					>
+						)}>
 						<ChevronLeftIcon className='h-6 w-5 hover:stroke-violet-500 mr-2' />
 						{t('goBackToTheList')}
 					</Link>

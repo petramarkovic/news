@@ -32,15 +32,13 @@ export const Slider: React.FC<ArticlesArrayInterface> = ({ articles }) => {
 			spaceBetween={30}
 			navigation
 			modules={[Navigation]}
-			className='pb-10 px-1'
-		>
+			className='pb-10 px-1'>
 			{articles
 				.filter((article) => !article.title.includes(removedArticle))
 				.map((article, index) => (
 					<SwiperSlide
 						key={index}
-						className='self-stretch h-auto flex flex-col shadow-md rounded-lg'
-					>
+						className='self-stretch h-auto flex flex-col shadow-md rounded-lg'>
 						<Card
 							title={article.title}
 							description={article.description}

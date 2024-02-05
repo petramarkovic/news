@@ -12,8 +12,10 @@ export const Header = () => {
 		<header className='py-3'>
 			<Wrap>
 				<div className='flex items-center justify-between'>
-					<Link to="/" className='font-bold text-xl text-dark hover:text-ternaryLight transition-colors'>
-						{(t('logo'))}
+					<Link
+						to='/'
+						className='font-bold text-xl text-dark hover:text-ternaryLight transition-colors'>
+						{t('logo')}
 					</Link>
 					<Navbar />
 					<Lang />

@@ -6,7 +6,7 @@ interface CategoryDataProps {
 	categoryData: ArticleInterface[];
 }
 
-export const CategoryContent = ({ categoryData } : CategoryDataProps) => {
+export const CategoryContent = ({ categoryData }: CategoryDataProps) => {
 	if (categoryData?.length) {
 		return <Slider articles={categoryData} />;
 	}

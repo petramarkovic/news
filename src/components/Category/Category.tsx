@@ -35,13 +35,12 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 			<div className='mb-6 border-b-2 border-secondaryLight pb-6'>
 				<Button
 					className='flex items-center justify-between capitalize text-2xl font-medium w-full text-left text-ternaryLight py-4 rounded-lg hover:text-dark transition'
-					onClick={clickHandler}
-				>
+					onClick={clickHandler}>
 					{category}
 					{/* TODO Use positive conditions when possible */}
 					{isOpen ? (
 						<ChevronUpIcon className='w-5 h-5' />
-						) : (
+					) : (
 						<ChevronDownIcon className='w-5 h-5' />
 					)}
 				</Button>
@@ -49,8 +48,7 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 				{isOpen && <CategoryContent categoryData={categoryData} />}
 				<Link
 					className='text-secondaryDark font-medium py-2 px-4 mt-3 mr-auto rounded-lg flex justify-start items-center pl-0 transition hover:text-dark'
-					to={`/categories/${category}`}
-				>
+					to={`/categories/${category}`}>
 					See all {category} news from {lang === 'GB' ? GBTitle : USTitle}
 					<ChevronRightIcon className='w-5 h-5' />
 				</Link>

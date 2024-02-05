@@ -53,8 +53,7 @@ export const Search: React.FC = () => {
 				setDisplayedQuery(initialQuery || debouncedSearch);
 				setIsEmpty(false);
 				setError(null);
-
-			} catch (error : any) {
+			} catch (error: any) {
 				setResults([]);
 				setError(error?.message || 'Failed to fetch news. Please try again.');
 			} finally {
@@ -109,8 +108,7 @@ export const Search: React.FC = () => {
 						) : (
 							<button
 								className='absolute bottom-3 right-0 py-2 px-4 transition-all hover:opacity-70'
-								type='submit'
-							>
+								type='submit'>
 								<MagnifyingGlassIcon
 									aria-hidden='true'
 									className='w-7 h-7 text-dark'
@@ -126,13 +124,13 @@ export const Search: React.FC = () => {
 				{results?.length ? (
 					<div className='lg:flex lg:justify-between items-center mb-5'>
 						<p className='text-dark text-2xl'>
-							{t('allNewsFrom')} {lang === 'GB' ? GBTitle : USTitle} {t('byTerm')} '{displayedQuery}'
+							{t('allNewsFrom')} {lang === 'GB' ? GBTitle : USTitle}{' '}
+							{t('byTerm')} '{displayedQuery}'
 						</p>
 						<button
 							type='button'
 							className='text-black flex items-center lg:ml-6 lg:mt-0 mt-3 transition hover:text-primaryDark'
-							onClick={handleClear}
-						>
+							onClick={handleClear}>
 							{t('clearButton')}
 							<XMarkIcon className='w-5 h-5' />
 						</button>
@@ -152,13 +150,11 @@ export const Search: React.FC = () => {
 					{results?.map((article, index) => (
 						<li
 							key={index}
-							className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch'
-						>
+							className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch'>
 							<Link
 								to='/article'
 								state={article}
-								className='shadow rounded-lg h-full flex flex-col hover:cursor-pointer transition opacity-75 hover:opacity-100'
-							>
+								className='shadow rounded-lg h-full flex flex-col hover:cursor-pointer transition opacity-75 hover:opacity-100'>
 								<Card
 									title={''}
 									urlToImage={''}
