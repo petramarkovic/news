@@ -5,19 +5,13 @@ import { Button } from '../UI/Button/Button';
 import { twMerge } from 'tailwind-merge';
 import { UkIcon } from '../Icons/UkIcon';
 import { UsaIcon } from '../Icons/UsaIcon';
-import { useQuery } from '@tanstack/react-query';
 
 export const Lang = () => {
 	const { lang, setLang } = useLanguageContext();
 	const location = useLocation();
 
-	const { refetch } = useQuery({
-		queryKey: ['articles', { lang }]
-	});
-
 	const handleLanguageChange = (newLang: LanguageType) => {
 		setLang(newLang);
-		refetch();
 	};
 
 	const shouldDisableLanguageToggle = () => {

@@ -1,7 +1,8 @@
 import { useLanguageContext } from '../store/languageContext';
 import { useParams } from 'react-router-dom';
 import { ArticlesArrayInterface } from '../types';
-import useFetch from './useFetch';
+import { useQuery } from '@tanstack/react-query';
+import { fetchData } from '../utils/fetchData';
 
 const useArticle = () => {
 	const { lang } = useLanguageContext();
@@ -9,11 +10,13 @@ const useArticle = () => {
 	const { category } = useParams();
 	const formattedCategory = category || '';
 
-	const { data, isPending, error } = useFetch<ArticlesArrayInterface>(
-		`https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}`
-	);
+	const { data, error, isLoading } = useQuery<ArticlesArrayInterface, string>({
+		queryKey: ['articles', lang, formattedCategory],
+		queryFn: () => fetchData<ArticlesArrayInterface>(`https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}`),
+		staleTime: 6 * 60 * 60 * 1000,
+	});
 
-	return { data, isPending, error, formattedCategory };
+	return { data, isLoading, error, formattedCategory };
 };
 
 export default useArticle;

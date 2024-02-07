@@ -3,7 +3,7 @@ import { Slider } from './CategorySlider';
 import { ArticleInterface } from '../../types';
 
 interface CategoryDataProps {
-	categoryData: ArticleInterface[];
+	categoryData?: ArticleInterface[];
 }
 
 export const CategoryContent = ({ categoryData }: CategoryDataProps) => {

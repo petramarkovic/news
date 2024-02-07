@@ -1,4 +1,3 @@
-import useArticle from '../../hooks/useArticle';
 import { Link } from 'react-router-dom';
 import { Card, CardSkeleton } from '../Card';
 import { Wrap } from '../UI/Wrap/Wrap';
@@ -9,10 +8,12 @@ import { useLanguageContext } from '../../store/languageContext';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import useArticle from '../../hooks/useArticle';
+
 
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
-	const { data, isPending, error, formattedCategory } = useArticle();
+	const { data, isLoading, error, formattedCategory } = useArticle();
 	const { t } = useTranslation();
 
 	const GBTitle = t('greatBritain');
@@ -71,7 +72,7 @@ export const Articles: React.FC = () => {
 				)}
 				<div className='flex flex-wrap'>
 					{error && <p>{t('errorFetchingData')}</p>}
-					{isPending && skeletonArray}
+					{isLoading && skeletonArray}
 					{data && (
 						<div className='flex flex-wrap w-full'>
 							{data.articles
