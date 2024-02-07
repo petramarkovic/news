@@ -3,10 +3,10 @@ import { Slider } from './CategorySlider';
 import { ArticleInterface } from '../../types';
 
 interface CategoryDataProps {
-	categoryData: ArticleInterface[];
+	categoryData?: ArticleInterface[];
 }
 
-export const CategoryContent: React.FC<CategoryDataProps> = ({ categoryData }) => {
+export const CategoryContent = ({ categoryData }: CategoryDataProps) => {
 	if (categoryData?.length) {
 		return <Slider articles={categoryData} />;
 	}

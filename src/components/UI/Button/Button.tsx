@@ -10,10 +10,7 @@ export const Button: React.FC<ButtonProps> = ({
 	...rest
 }) => {
 	return (
-		<button
-			className={className}
-			{...rest}
-		>
+		<button className={className} {...rest}>
 			{children}
 		</button>
 	);

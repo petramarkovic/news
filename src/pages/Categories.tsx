@@ -25,10 +25,7 @@ export const Categories = () => {
 					{t('categoriesHeadline')} {lang === 'GB' ? GBTitle : USTitle}
 				</h1>
 				{categories.map((category, index) => (
-					<Category
-						category={category}
-						key={index}
-					/>
+					<Category category={category} key={index} />
 				))}
 			</Wrap>
 		</div>

@@ -1,32 +1,20 @@
 import { useLanguageContext } from '../store/languageContext';
-import { useState, useEffect } from 'react';
-import { ArticleInterface } from '../types';
+import { ArticlesArrayInterface } from '../types';
+import { useQuery } from '@tanstack/react-query';
+import { fetchData } from '../utils/fetchData';
 
 const key = `${process.env.REACT_APP_API_KEY}`;
 
 const useCategory = (category: string) => {
 	const { lang } = useLanguageContext();
 
-	const [categoryData, setCategoryData] = useState<ArticleInterface[]>([]);
-	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const { data, error, isPending } = useQuery<ArticlesArrayInterface, string>({
+		queryKey: ['articles', lang, category],
+		queryFn: () => fetchData<ArticlesArrayInterface>(`https://newsapi.org/v2/top-headlines?country=${lang}&category=${category}&apiKey=${key}&pageSize=5`),
+		staleTime: 6 * 60 * 60 * 1000,
+	});
 
-	useEffect(() => {
-		const fetchDataForCategory = async () => {
-			const response = await fetch(
-				`https://newsapi.org/v2/top-headlines?country=${lang}&category=${category}&apiKey=${key}&pageSize=5`
-			);
-
-			if (response.ok) {
-				const data = await response.json();
-				setCategoryData(data.articles);
-				setIsLoading(false);
-			}
-		};
-
-		fetchDataForCategory();
-	}, [lang, category]);
-
-	return { categoryData, isLoading };
+	return { data, isPending, error };
 };
 
 export default useCategory;
