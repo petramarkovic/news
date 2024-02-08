@@ -15,7 +15,6 @@ export const Search: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { t } = useTranslation();
 	const [query, setQuery] = useState(() => {
-		// Retrieve query from localStorage if available, otherwise use an empty string
 		return localStorage.getItem('searchQuery') || '';
 	});
 	const [displayedQuery, setDisplayedQuery] = useState('');
@@ -37,14 +36,14 @@ export const Search: React.FC = () => {
 
 	useEffect(() => {
 		localStorage.setItem('searchQuery', query);
-		
+
 		if (initialQuery) {
 			setDisplayedQuery(initialQuery);
 		}
 
 		setSearchParams({ query: debouncedSearch });
 
-	}, [debouncedSearch, searchParams, initialQuery]);
+	}, [debouncedSearch, searchParams, initialQuery, query, setSearchParams]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
