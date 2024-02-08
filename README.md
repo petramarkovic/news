@@ -1,5 +1,15 @@
 # React, TypeScript, Tailwind and Vite news app
 
+## Checkout locally
+
+NVM version: 18.13.9
+NPM version: 8.19.3
+
+1. Clone the repository to your machine
+2. Run npm install
+3. Create .env file with  and insert: REACT_APP_API_KEY=${yourKey}
+4. Run npm run dev
+
 ## Features
 
 - **Dynamic Headlines:** Experience real-time updates with our meticulously curated selection of breaking news and in-depth articles.
