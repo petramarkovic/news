@@ -1,12 +1,12 @@
 import { useLanguageContext } from '../store/languageContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearch } from '../hooks/useSearch';
 import { Wrap } from '../components/UI/Wrap/Wrap';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { Card, CardSkeleton } from '../components/Card';
 import { Input } from '../components/Input';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Loader from '../components/UI/Loader/Loader';
 import { useDebounce } from '../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
@@ -14,8 +14,13 @@ import { useTranslation } from 'react-i18next';
 export const Search: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { t } = useTranslation();
-	const [query, setQuery] = useState('');
+	const [query, setQuery] = useState(() => {
+		// Retrieve query from localStorage if available, otherwise use an empty string
+		return localStorage.getItem('searchQuery') || '';
+	});
 	const [displayedQuery, setDisplayedQuery] = useState('');
+	const [searchParams, setSearchParams] = useSearchParams();
+	const initialQuery = searchParams.get('query');
 	const debouncedSearch = useDebounce(query);
 
 	const GBTitle = t('greatBritain');
@@ -26,9 +31,20 @@ export const Search: React.FC = () => {
 	));
 	
 	const { data, isLoading, error } = useSearch(
-		debouncedSearch,
+		initialQuery || debouncedSearch,
 		lang
 	);
+
+	useEffect(() => {
+		localStorage.setItem('searchQuery', query);
+		
+		if (initialQuery) {
+			setDisplayedQuery(initialQuery);
+		}
+
+		setSearchParams({ query: debouncedSearch });
+
+	}, [debouncedSearch, searchParams, initialQuery]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
