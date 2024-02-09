@@ -5,10 +5,12 @@ import { Button } from '../UI/Button/Button';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'react-i18next';
+import { useMedia } from '../../hooks/useMedia';
 
 export const Navbar = () => {
 	const { t } = useTranslation();
 	const [isActive, setIsActive] = useState(true);
+	const isMobile = useMedia('(max-width: 1024px');
 
 	const menuHandler = () => {
 		setIsActive((prevState) => !prevState);
@@ -16,8 +18,7 @@ export const Navbar = () => {
 	};
 
 	const navLinkClickHandler = () => {
-		// TODO Create useMedia hook
-		if (window.innerWidth < 1024) {
+		if (isMobile) {
 			setIsActive((prevState) => !prevState);
 			updateOverflow();
 		}
