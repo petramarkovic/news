@@ -14,9 +14,7 @@ import { useTranslation } from 'react-i18next';
 export const Search: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { t } = useTranslation();
-	const [query, setQuery] = useState(() => {
-		return localStorage.getItem('searchQuery') || '';
-	});
+	const [query, setQuery] = useState('');
 	const [displayedQuery, setDisplayedQuery] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 	const initialQuery = searchParams.get('query');
@@ -30,29 +28,27 @@ export const Search: React.FC = () => {
 	));
 	
 	const { data, isLoading, error } = useSearch(
-		initialQuery || debouncedSearch,
+		debouncedSearch,
 		lang
 	);
 
 	useEffect(() => {
-		localStorage.setItem('searchQuery', query);
-
 		if (initialQuery) {
+			setQuery(initialQuery);
 			setDisplayedQuery(initialQuery);
 		}
-
-		setSearchParams({ query: debouncedSearch });
-
-	}, [debouncedSearch, searchParams, initialQuery, query, setSearchParams]);
+	}, [initialQuery]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
 		setDisplayedQuery(e.target.value);
+		setSearchParams({ query: e.target.value });
 	};
 
 	const handleClear = () => {
 		setQuery('');
 		setDisplayedQuery('');
+		setSearchParams({ query: '' });
 	};
 
 	return (
