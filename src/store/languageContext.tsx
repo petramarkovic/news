@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { createContext, useContext } from 'react';
-import { LanguageContextInterface, childrenProps, LanguageType } from '../types';
+import {
+	LanguageContextInterface,
+	childrenProps,
+	LanguageType
+} from '../types';
 
 const LanguageInitialState: LanguageContextInterface = {
 	lang: 'GB',
@@ -12,7 +16,9 @@ export const LanguageContext =
 
 export const LanguageProvider: React.FC<childrenProps> = (props) => {
 	const storedLang = localStorage.getItem('selectedLanguage');
-	const initialLang: LanguageType = storedLang ? (storedLang as LanguageType) : 'GB';
+	const initialLang: LanguageType = storedLang
+		? (storedLang as LanguageType)
+		: 'GB';
 	const [lang, setLang] = useState<LanguageType>(initialLang);
 
 	const contextValue: LanguageContextInterface = {

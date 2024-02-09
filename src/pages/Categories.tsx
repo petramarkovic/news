@@ -19,7 +19,7 @@ export const Categories = () => {
 	];
 
 	return (
-		<div className='py-20'>
+		<div className='py-20 px-2'>
 			<Wrap>
 				<h1 className='text-3xl text-secondaryDark uppercase mb-8'>
 					{t('categoriesHeadline')} {lang === 'GB' ? GBTitle : USTitle}

@@ -12,8 +12,10 @@ const useArticle = () => {
 
 	const { data, error, isLoading } = useQuery<ArticlesArrayInterface, string>({
 		queryKey: ['articles', lang, formattedCategory],
-		queryFn: () => fetchData<ArticlesArrayInterface>(`https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}`),
-		staleTime: 6 * 60 * 60 * 1000,
+		queryFn: () =>
+			fetchData<ArticlesArrayInterface>(
+				`https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}`
+			)
 	});
 
 	return { data, isLoading, error, formattedCategory };

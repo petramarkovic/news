@@ -9,7 +9,7 @@ export const Header = () => {
 	const { t } = useTranslation();
 
 	return (
-		<header className='py-3'>
+		<header className='py-3 px-2'>
 			<Wrap>
 				<div className='flex items-center justify-between'>
 					<Link
