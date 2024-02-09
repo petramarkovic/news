@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import useArticle from '../../hooks/useArticle';
 
-
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { data, isLoading, error, formattedCategory } = useArticle();
@@ -48,14 +47,14 @@ export const Articles: React.FC = () => {
 	return (
 		<div className='py-20 min-h-screen'>
 			<Wrap>
-				<div className='flex justify-between items-center mb-8'>
-					<h1 className='text-3xl text-secondaryDark uppercase'>
+				<div className='md:flex justify-between items-center mb-8 px-2'>
+					<h1 className='mb-6 md:mb-0 text-3xl text-secondaryDark uppercase'>
 						{t('mainHeadline')} {formattedCategory}{' '}
 						{lang === 'GB' ? GBTitle : USTitle}
 					</h1>
 					<span className='font-medium flex gap-2 items-center mr-6'>
 						{formattedDate}
-						<CalendarDaysIcon className='w-6 h-6'/>
+						<CalendarDaysIcon className='w-6 h-6' />
 					</span>
 				</div>
 				{formattedCategory !== '' && (
@@ -64,8 +63,7 @@ export const Articles: React.FC = () => {
 						className={twMerge(
 							`text-sm font-light text-secondary transition ease-in-out lowercase hover:text-dark py-4 mr-5 inline-flex items-center`,
 							'inline-flex'
-						)}
-					>
+						)}>
 						<ChevronLeftIcon className='h-6 w-5 hover:stroke-violet-500 mr-2' />
 						{t('goBackButtonCategories')}
 					</Link>
@@ -80,13 +78,11 @@ export const Articles: React.FC = () => {
 								.map((article, index) => (
 									<div
 										key={index}
-										className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch first-of-type:lg:w-full first-of-type:lg:h-40 relative first-of-type:lg:text-3xl transition hover:text-secondary'
-									>
+										className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch first-of-type:lg:w-full first-of-type:lg:h-40 relative first-of-type:lg:text-3xl transition hover:text-secondary'>
 										<Link
 											to='/article'
 											state={article}
-											className='shadow-md rounded-lg h-full flex flex-col hover:cursor-pointer transition '
-										>
+											className='shadow-md rounded-lg h-full flex flex-col hover:cursor-pointer transition '>
 											<Card
 												title={article.title}
 												description={article.description}

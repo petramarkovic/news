@@ -7,7 +7,7 @@ export const useMedia = (query: string) => {
 		const mediaQuery = window.matchMedia(query);
 		const handleChange = (event: MediaQueryListEvent) => {
 			setMatches(event.matches);
-		}
+		};
 
 		setMatches(mediaQuery.matches);
 
@@ -15,7 +15,7 @@ export const useMedia = (query: string) => {
 
 		return () => {
 			mediaQuery.removeEventListener('change', handleChange);
-		}
+		};
 	}, [query]);
 
 	return matches;
