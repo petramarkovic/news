@@ -17,7 +17,7 @@ NPM version: 8.19.3
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `REACT_APP_API_KEY`  | `string` | **Required**. Id of item to fetch |
+| `REACT_APP_API_KEY`  | `string` | **Required**. Your API key |
 
 4. Run 
 ```bash
