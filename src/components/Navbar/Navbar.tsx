@@ -37,7 +37,7 @@ export const Navbar = () => {
 	};
 
 	return (
-		<nav className={`ml-auto ${isActive ? 'nav--active' : ''}`}>
+		<nav data-testid="nav" className={`ml-auto ${isActive ? 'nav--active' : ''}`}>
 			<Button
 				className='text-dark mr-3 flex items-center lg:hidden'
 				onClick={menuHandler}>
@@ -63,7 +63,8 @@ export const Navbar = () => {
 							isActive && 'text-ternaryDark'
 						)
 					}
-					onClick={navLinkClickHandler}>
+					onClick={navLinkClickHandler}
+					data-testid="topNews">
 					{t('navigation.topNews')}
 				</NavLink>
 				<NavLink
@@ -74,7 +75,8 @@ export const Navbar = () => {
 							isActive && 'text-ternaryDark'
 						)
 					}
-					onClick={navLinkClickHandler}>
+					onClick={navLinkClickHandler}
+					data-testid="categories">
 					{t('navigation.categories')}
 				</NavLink>
 				<NavLink
@@ -85,9 +87,10 @@ export const Navbar = () => {
 							isActive && 'text-ternaryDark'
 						)
 					}
-					onClick={navLinkClickHandler}>
+					onClick={navLinkClickHandler}
+					data-testid="search">
 					{t('navigation.search')}
-					<MagnifyingGlassIcon className='lg:h-4 lg:w-4 ml-2 tex-white inline w-7 h-7' />
+					<MagnifyingGlassIcon className='lg:h-4 lg:w-4 ml-2 tex-white inline w-7 h-7'/>
 				</NavLink>
 			</ul>
 		</nav>
