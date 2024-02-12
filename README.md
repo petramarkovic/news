@@ -13,7 +13,7 @@ NPM version: 8.19.3
 ```bash
   npm install
 ```
-3. Create .env file with  and insert: 
+3. Create .env file with: 
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |

@@ -19,11 +19,11 @@ export const Lang = () => {
 	};
 
 	return (
-		<div className='flex'>
+		<div className='flex' data-testid="lang">
 			<Button
 				className={twMerge(
-					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all`,
-					lang === 'GB' ? 'pointer-events-none' : 'opacity-70',
+					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all disabled:opacity-70`,
+					lang === 'GB' ? 'pointer-events-none active' : 'opacity-70',
 					shouldDisableLanguageToggle() === true
 						? 'opacity-50 text-stone-400'
 						: ''
@@ -35,8 +35,8 @@ export const Lang = () => {
 			</Button>
 			<Button
 				className={twMerge(
-					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all`,
-					lang === 'US' ? 'pointer-events-none' : 'opacity-70',
+					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all disabled:opacity-70`,
+					lang === 'US' ? 'pointer-events-none active' : 'opacity-70',
 					shouldDisableLanguageToggle() === true
 						? 'opacity-50 text-stone-400'
 						: ''
