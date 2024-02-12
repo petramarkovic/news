@@ -60,7 +60,7 @@ export const Navbar = () => {
 					className={({ isActive }) =>
 						twMerge(
 							'text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl',
-							isActive && 'text-ternaryDark'
+							isActive && 'text-ternaryDark active'
 						)
 					}
 					onClick={navLinkClickHandler}
@@ -72,7 +72,7 @@ export const Navbar = () => {
 					className={({ isActive }) =>
 						twMerge(
 							'text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl',
-							isActive && 'text-ternaryDark'
+							isActive && 'text-ternaryDark active'
 						)
 					}
 					onClick={navLinkClickHandler}
@@ -84,7 +84,7 @@ export const Navbar = () => {
 					className={({ isActive }) =>
 						twMerge(
 							'text-secondary lg:text-base lg:mb-0 lowercase font-semibold transition-all mr-5 inline-flex items-center hover:text-secondaryDark mb-4 text-3xl',
-							isActive && 'text-ternaryDark'
+							isActive && 'text-ternaryDark active'
 						)
 					}
 					onClick={navLinkClickHandler}

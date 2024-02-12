@@ -5,7 +5,7 @@ import { describe, it } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import { Navbar } from '.';
 
-const MockedNavbar = () => {
+const MockNavbar = () => {
 	return (
 		<BrowserRouter>
 			<Navbar />
@@ -15,13 +15,13 @@ const MockedNavbar = () => {
 
 describe('Navbar', () => {
 	it('should render Navbar correctly', () => {
-		render(<MockedNavbar />);
+		render(<MockNavbar />);
 		
 		expect(screen.getByTestId('nav')).toBeInTheDocument();
 	});
 
 	it('should navigate to the correct paths when links are clicked', () => {
-		render(<MockedNavbar />);
+		render(<MockNavbar />);
 
 		const topNewsLink = screen.getByTestId(/topNews/i);
 		const categoryLink = screen.getByTestId(/categories/i);
@@ -35,5 +35,17 @@ describe('Navbar', () => {
 
 		fireEvent.click(searchLink);
 		expect(window.location.pathname).toBe('/search');
+	});
+
+	it('should have active class on the link that is currently active', () => {
+		render(<MockNavbar />);
+
+		const topNewsLink = screen.getByText(/topNews/i);
+		const categoryLink = screen.getByTestId(/categories/i);
+		const searchLink = screen.getByTestId(/search/i);
+
+		window.location.pathname === '/' ? expect(topNewsLink).toHaveClass('active') : expect(topNewsLink).not.toHaveClass('active');
+		window.location.pathname === '/categories' ? expect(categoryLink).toHaveClass('active') : expect(categoryLink).not.toHaveClass('active');
+		window.location.pathname === '/search' ? expect(searchLink).toHaveClass('active') : expect(searchLink).not.toHaveClass('active');
 	});
 });
