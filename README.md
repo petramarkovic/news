@@ -14,9 +14,10 @@ NPM version: 8.19.3
   npm install
 ```
 3. Create .env file with  and insert: 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `REACT_APP_API_KEY` | `string` | **Required**. Your API key |
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `REACT_APP_API_KEY`  | `string` | **Required**. Id of item to fetch |
 
 4. Run 
 ```bash
