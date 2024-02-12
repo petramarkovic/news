@@ -14,9 +14,10 @@ NPM version: 8.19.3
   npm install
 ```
 3. Create .env file with  and insert: 
-```bash
-  REACT_APP_API_KEY=${yourKey}
-```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `REACT_APP_API_KEY` | `string` | **Required**. Your API key |
+
 4. Run 
 ```bash
   npm run dev
