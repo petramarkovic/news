@@ -6,9 +6,23 @@ NVM version: 18.13.9
 NPM version: 8.19.3
 
 1. Clone the repository to your machine
-2. Run npm install
-3. Create .env file with  and insert: REACT_APP_API_KEY=${yourKey}
-4. Run npm run dev
+```bash
+  git clone https://github.com/petramarkovic/news.git
+```
+2. Run 
+```bash
+  npm install
+```
+3. Create .env file with  and insert: 
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `REACT_APP_API_KEY`  | `string` | **Required**. Your API key |
+
+4. Run 
+```bash
+  npm run dev
+```
 
 ## Features
 
