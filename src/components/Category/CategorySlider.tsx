@@ -32,7 +32,8 @@ export const Slider: React.FC<ArticlesArrayInterface> = ({ articles }) => {
 			spaceBetween={30}
 			navigation
 			modules={[Navigation]}
-			className='pb-10 px-1'>
+			className='pb-10 px-1'
+			title='slider'>
 			{articles
 				.filter((article) => !article.title.includes(removedArticle))
 				.map((article, index) => (
