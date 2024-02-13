@@ -9,13 +9,6 @@ import { CategoryProps } from '../../types';
 import useCategory from '../../hooks/useCategory';
 import { CategoryContent } from './CategoryContent';
 
-/*
-	TODO
-	Create `useCategory` hook and move logic from Category.tsx. 
-	Also, eslint shows that useEffect is missing a `key` as deps. 
-	This happens because key is declared inside of a component, you can move it outside.
-*/
-
 export const Category: React.FC<CategoryProps> = ({ category }) => {
 	const { lang } = useLanguageContext();
 	const { t } = useTranslation();
@@ -37,14 +30,12 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 					className='flex items-center justify-between capitalize text-2xl font-medium w-full text-left text-ternaryLight py-4 rounded-lg hover:text-dark transition'
 					onClick={clickHandler}>
 					{category}
-					{/* TODO Use positive conditions when possible */}
 					{isOpen ? (
 						<ChevronUpIcon className='w-5 h-5' />
 					) : (
 						<ChevronDownIcon className='w-5 h-5' />
 					)}
 				</Button>
-				{/* TODO Create function or new component for handling these conditions with early exit approach */}
 				{isOpen && <CategoryContent categoryData={data?.articles} />}
 				<Link
 					className='text-secondaryDark font-medium py-2 px-4 mt-3 mr-auto rounded-lg flex justify-start items-center pl-0 transition hover:text-dark'
