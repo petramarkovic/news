@@ -15,6 +15,7 @@ export const Search: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { t } = useTranslation();
 	const [query, setQuery] = useState('');
+	// TODO What is the difference between query and displayedQuery? Seems like displayedQuery can be removed?
 	const [displayedQuery, setDisplayedQuery] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 	const initialQuery = searchParams.get('query');
@@ -64,6 +65,7 @@ export const Search: React.FC = () => {
 							type='text'
 						/>
 						{isLoading && <Loader />}
+						{/* TODO If length is zero, '0' will be rendered. Use !!data?.articles.length or ? () : () */}
 						{data?.articles.length && (
 							<Button
 								type='button'
