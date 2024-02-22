@@ -78,7 +78,7 @@ export const Articles: React.FC = () => {
 								.map((article, index) => (
 									<div
 										key={index}
-										className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch first-of-type:lg:w-full first-of-type:lg:h-40 relative first-of-type:lg:text-3xl transition hover:text-secondary'>
+										className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch transition hover:text-secondary justify-stretch relative'>
 										<Link
 											to='/article'
 											state={article}
@@ -88,7 +88,7 @@ export const Articles: React.FC = () => {
 												description={article.description}
 												urlToImage={article.urlToImage}
 											/>
-											<ChevronRightIcon className='absolute bottom-5 flex justify-center items-center right-5 w-5 h-5 bg-primary rounded-full text-secondaryDark opacity-80' />
+											<ChevronRightIcon className='absolute bottom-5 flex justify-center items-center right-3 w-5 h-5 bg-primary rounded-full text-secondaryDark opacity-80 bg-transparent' />
 										</Link>
 									</div>
 								))}
