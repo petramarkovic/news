@@ -7,13 +7,14 @@ import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import { useLanguageContext } from '../../store/languageContext';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import useDate from '../../hooks/useDate';
 import useArticle from '../../hooks/useArticle';
 
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { data, isLoading, error, formattedCategory } = useArticle();
 	const { t } = useTranslation();
+	const { formattedDate } = useDate();
 
 	const GBTitle = t('greatBritain');
 	const USTitle = t('unitedStates');
@@ -22,27 +23,6 @@ export const Articles: React.FC = () => {
 	const skeletonArray = Array.from({ length: 9 }, (_, index) => (
 		<CardSkeleton key={index} />
 	));
-
-	const [currentDate, setCurrentDate] = useState(new Date());
-
-	useEffect(() => {
-		const calculateTimeUntilNextDay = () => {
-			const now = new Date();
-			const tomorrow = new Date(now);
-			tomorrow.setDate(now.getDate() + 1);
-			tomorrow.setHours(0, 0, 0, 0);
-			return tomorrow.getTime() - now.getTime();
-		};
-
-		const updateDate = () => {
-			setCurrentDate(new Date());
-		};
-
-		const intervalId = setInterval(updateDate, calculateTimeUntilNextDay());
-		return () => clearInterval(intervalId);
-	}, []);
-
-	const formattedDate = currentDate.toDateString();
 
 	return (
 		<div className='py-20 min-h-screen'>
@@ -78,7 +58,7 @@ export const Articles: React.FC = () => {
 								.map((article, index) => (
 									<div
 										key={index}
-										className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch first-of-type:lg:w-full first-of-type:lg:h-40 relative first-of-type:lg:text-3xl transition hover:text-secondary'>
+										className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch transition hover:text-secondary justify-stretch relative'>
 										<Link
 											to='/article'
 											state={article}
@@ -88,7 +68,7 @@ export const Articles: React.FC = () => {
 												description={article.description}
 												urlToImage={article.urlToImage}
 											/>
-											<ChevronRightIcon className='absolute bottom-5 flex justify-center items-center right-5 w-5 h-5 bg-primary rounded-full text-secondaryDark opacity-80' />
+											<ChevronRightIcon className='absolute bottom-5 flex justify-center items-center right-3 w-5 h-5 bg-primary rounded-full text-secondaryDark opacity-80 bg-transparent' />
 										</Link>
 									</div>
 								))}
