@@ -7,13 +7,14 @@ import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import { useLanguageContext } from '../../store/languageContext';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import useDate from '../../hooks/useDate';
 import useArticle from '../../hooks/useArticle';
 
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { data, isLoading, error, formattedCategory } = useArticle();
 	const { t } = useTranslation();
+	const { formattedDate } = useDate();
 
 	const GBTitle = t('greatBritain');
 	const USTitle = t('unitedStates');
@@ -22,28 +23,6 @@ export const Articles: React.FC = () => {
 	const skeletonArray = Array.from({ length: 9 }, (_, index) => (
 		<CardSkeleton key={index} />
 	));
-
-	// TODO Nice add-on. This is a nice case for a custom hook
-	const [currentDate, setCurrentDate] = useState(new Date());
-
-	useEffect(() => {
-		const calculateTimeUntilNextDay = () => {
-			const now = new Date();
-			const tomorrow = new Date(now);
-			tomorrow.setDate(now.getDate() + 1);
-			tomorrow.setHours(0, 0, 0, 0);
-			return tomorrow.getTime() - now.getTime();
-		};
-
-		const updateDate = () => {
-			setCurrentDate(new Date());
-		};
-
-		const intervalId = setInterval(updateDate, calculateTimeUntilNextDay());
-		return () => clearInterval(intervalId);
-	}, []);
-
-	const formattedDate = currentDate.toDateString();
 
 	return (
 		<div className='py-20 min-h-screen'>
