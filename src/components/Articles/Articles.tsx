@@ -23,6 +23,7 @@ export const Articles: React.FC = () => {
 		<CardSkeleton key={index} />
 	));
 
+	// TODO Nice add-on. This is a nice case for a custom hook
 	const [currentDate, setCurrentDate] = useState(new Date());
 
 	useEffect(() => {

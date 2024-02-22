@@ -19,11 +19,12 @@ export const Lang = () => {
 	};
 
 	return (
-		<div className='flex' data-testid="lang">
+		<div className='flex' data-testid='lang'>
 			<Button
 				className={twMerge(
 					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all disabled:opacity-70`,
 					lang === 'GB' ? 'pointer-events-none active' : 'opacity-70',
+					// TODO There is no need for this to be a function, also ' === true' is unnecessary. You can just add shouldDisableLanguageToggle && 'opacity-50 text-stone-400'
 					shouldDisableLanguageToggle() === true
 						? 'opacity-50 text-stone-400'
 						: ''

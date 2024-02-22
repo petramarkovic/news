@@ -15,6 +15,7 @@ export const LanguageContext =
 	createContext<LanguageContextInterface>(LanguageInitialState);
 
 export const LanguageProvider: React.FC<childrenProps> = (props) => {
+	// TODO This is also nice case for custom hook useLocalStorage
 	const storedLang = localStorage.getItem('selectedLanguage');
 	const initialLang: LanguageType = storedLang
 		? (storedLang as LanguageType)
