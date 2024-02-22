@@ -6,14 +6,18 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 import { Card, CardSkeleton } from '../components/Card';
 import { Input } from '../components/Input';
 import { Link, useSearchParams } from 'react-router-dom';
-import Loader from '../components/UI/Loader/Loader';
 import { useDebounce } from '../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/UI/Button/Button';
+import { CalendarDaysIcon } from '@heroicons/react/24/outline';
+import Loader from '../components/UI/Loader/Loader';
+import useDate from '../hooks/useDate';
 
 export const Search: React.FC = () => {
 	const { lang } = useLanguageContext();
 	const { t } = useTranslation();
+	const { formattedDate } = useDate();
+
 	const [query, setQuery] = useState('');
 	// TODO What is the difference between query and displayedQuery? Seems like displayedQuery can be removed?
 	const [displayedQuery, setDisplayedQuery] = useState('');
@@ -52,9 +56,15 @@ export const Search: React.FC = () => {
 	return (
 		<div className='py-20 px-2'>
 			<Wrap>
-				<h1 className='mb-8 text-3xl text-secondaryDark uppercase'>
-					{t('searchHeadline')} {lang === 'GB' ? GBTitle : USTitle}
-				</h1>
+				<div className='md:flex justify-between items-center mb-8 px-2'>
+					<h1 className='mb-6 md:mb-0 text-3xl text-secondaryDark uppercase'>
+						{t('searchHeadline')} {lang === 'GB' ? GBTitle : USTitle}
+					</h1>
+					<span className='font-medium flex gap-2 items-center mr-6'>
+						{formattedDate}
+						<CalendarDaysIcon className='w-6 h-6' />
+					</span>
+				</div>
 				<div className='flex my-20 relative'>
 					<form className='w-full relative'>
 						<Input

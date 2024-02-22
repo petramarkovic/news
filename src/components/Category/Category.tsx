@@ -6,8 +6,8 @@ import { useLanguageContext } from '../../store/languageContext';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import { useTranslation } from 'react-i18next';
 import { CategoryProps } from '../../types';
-import useCategory from '../../hooks/useCategory';
 import { CategoryContent } from './CategoryContent';
+import useCategory from '../../hooks/useCategory';
 
 export const Category: React.FC<CategoryProps> = ({ category }) => {
 	const { lang } = useLanguageContext();
