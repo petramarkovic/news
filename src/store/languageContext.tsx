@@ -5,6 +5,7 @@ import {
 	childrenProps,
 	LanguageType
 } from '../types';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const LanguageInitialState: LanguageContextInterface = {
 	lang: 'GB',
@@ -15,11 +16,9 @@ export const LanguageContext =
 	createContext<LanguageContextInterface>(LanguageInitialState);
 
 export const LanguageProvider: React.FC<childrenProps> = (props) => {
-	// TODO This is also nice case for custom hook useLocalStorage
-	const storedLang = localStorage.getItem('selectedLanguage');
-	const initialLang: LanguageType = storedLang
-		? (storedLang as LanguageType)
-		: 'GB';
+	const { setItem, getItem } = useLocalStorage('selectedLanguage');
+	const storedLang = getItem();
+	const initialLang: LanguageType = storedLang ? (storedLang as LanguageType) : 'GB';
 	const [lang, setLang] = useState<LanguageType>(initialLang);
 
 	const contextValue: LanguageContextInterface = {
@@ -28,7 +27,7 @@ export const LanguageProvider: React.FC<childrenProps> = (props) => {
 	};
 
 	useEffect(() => {
-		localStorage.setItem('selectedLanguage', lang);
+		setItem(lang);
 	}, [lang]);
 
 	return (
