@@ -70,8 +70,7 @@ export const Search: React.FC = () => {
 							type='text'
 						/>
 						{isLoading && <Loader />}
-						{/* TODO If length is zero, '0' will be rendered. Use !!data?.articles.length or ? () : () */}
-						{data?.articles.length && (
+						{!!data?.articles.length && (
 							<Button
 								type='button'
 								className='text-black flex items-center lg:ml-6 lg:mt-0 mt-3 transition hover:text-ternaryDark justify-end absolute right-4 bottom-5'
