@@ -11,8 +11,7 @@ export const useMedia = (query: string) => {
 
 		setMatches(mediaQuery.matches);
 
-		// TODO Note that this will throw an error in Safari. For some reason it still uses deprecated mediaQuery.addListener()
-		mediaQuery.addEventListener('change', handleChange);
+		mediaQuery.addListener(handleChange);
 
 		return () => {
 			mediaQuery.removeEventListener('change', handleChange);
