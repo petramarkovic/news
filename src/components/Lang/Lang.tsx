@@ -14,9 +14,7 @@ export const Lang = () => {
 		setLang(newLang);
 	};
 
-	const shouldDisableLanguageToggle = () => {
-		return location.pathname.startsWith('/article');
-	};
+	const shouldDisableLanguageToggle = location.pathname.startsWith('/article');
 
 	return (
 		<div className='flex' data-testid='lang'>
@@ -24,13 +22,10 @@ export const Lang = () => {
 				className={twMerge(
 					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all disabled:opacity-70`,
 					lang === 'GB' ? 'pointer-events-none active' : 'opacity-70',
-					// TODO There is no need for this to be a function, also ' === true' is unnecessary. You can just add shouldDisableLanguageToggle && 'opacity-50 text-stone-400'
-					shouldDisableLanguageToggle() === true
-						? 'opacity-50 text-stone-400'
-						: ''
+					shouldDisableLanguageToggle && 'opacity-50 text-stone-400'
 				)}
 				onClick={() => handleLanguageChange('GB')}
-				disabled={shouldDisableLanguageToggle()}>
+				disabled={shouldDisableLanguageToggle}>
 				GB
 				<UkIcon />
 			</Button>
@@ -38,12 +33,10 @@ export const Lang = () => {
 				className={twMerge(
 					`text-black px-2 py-4 enabled:hover:text-dark font-medium flex items-center gap-2 hover:opacity-100 transition-all disabled:opacity-70`,
 					lang === 'US' ? 'pointer-events-none active' : 'opacity-70',
-					shouldDisableLanguageToggle() === true
-						? 'opacity-50 text-stone-400'
-						: ''
+					shouldDisableLanguageToggle && 'opacity-50 text-stone-400'
 				)}
 				onClick={() => handleLanguageChange('US')}
-				disabled={shouldDisableLanguageToggle()}>
+				disabled={shouldDisableLanguageToggle}>
 				US
 				<UsaIcon />
 			</Button>
