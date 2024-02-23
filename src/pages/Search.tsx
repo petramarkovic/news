@@ -19,8 +19,6 @@ export const Search: React.FC = () => {
 	const { formattedDate } = useDate();
 
 	const [query, setQuery] = useState('');
-	// TODO What is the difference between query and displayedQuery? Seems like displayedQuery can be removed?
-	const [displayedQuery, setDisplayedQuery] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 	const initialQuery = searchParams.get('query');
 	const debouncedSearch = useDebounce(query);
@@ -37,19 +35,16 @@ export const Search: React.FC = () => {
 	useEffect(() => {
 		if (initialQuery) {
 			setQuery(initialQuery);
-			setDisplayedQuery(initialQuery);
 		}
 	}, [initialQuery]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
-		setDisplayedQuery(e.target.value);
 		setSearchParams({ query: e.target.value });
 	};
 
 	const handleClear = () => {
 		setQuery('');
-		setDisplayedQuery('');
 		setSearchParams({ query: '' });
 	};
 
@@ -75,8 +70,7 @@ export const Search: React.FC = () => {
 							type='text'
 						/>
 						{isLoading && <Loader />}
-						{/* TODO If length is zero, '0' will be rendered. Use !!data?.articles.length or ? () : () */}
-						{data?.articles.length && (
+						{!!data?.articles.length && (
 							<Button
 								type='button'
 								className='text-black flex items-center lg:ml-6 lg:mt-0 mt-3 transition hover:text-ternaryDark justify-end absolute right-4 bottom-5'
@@ -93,7 +87,7 @@ export const Search: React.FC = () => {
 					<div className='lg:flex lg:justify-between items-center mb-5'>
 						<p className='text-dark text-2xl'>
 							{t('allNewsFrom')} {lang === 'GB' ? GBTitle : USTitle}{' '}
-							{t('byTerm')} '{displayedQuery}'
+							{t('byTerm')} '{query}'
 						</p>
 					</div>
 				) : null}
@@ -112,7 +106,7 @@ export const Search: React.FC = () => {
 							<XMarkIcon className='w-5 h-5' />
 						</Button>
 						<p className='text-dark text-2xl my-20 h-60 flex items-center justify-center'>
-							{t('noSearchResults')} '{displayedQuery}'..
+							{t('noSearchResults')} '{query}'..
 						</p>
 					</div>
 				)}
@@ -120,7 +114,7 @@ export const Search: React.FC = () => {
 					{data?.articles.map((article, index) => (
 						<li
 							key={index}
-							className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch first-of-type:lg:w-full first-of-type:lg:h-40 relative first-of-type:lg:text-3xl transition hover:text-secondary'>
+							className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch relative transition hover:text-secondary'>
 							<Link
 								to='/article'
 								state={article}
