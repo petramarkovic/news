@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { expect } from 'vitest'
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { describe, it } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import { Lang } from '.';
@@ -37,16 +37,18 @@ describe('Lang', () => {
 		const UsLink = screen.getByRole('button', {name: /US/i});
 		const GbLink = screen.getByRole('button', {name: /GB/i});
 		fireEvent.click(UsLink);
-		setTimeout(() => {
+
+		waitFor(() => {
 			expect(UsLink).toHaveClass('active');
 			expect(GbLink).not.toHaveClass('active');
-		}, 100);
+		});
 
 		fireEvent.click(GbLink);
-		setTimeout(() => {
+
+		waitFor(() => {
 			expect(GbLink).toHaveClass('active');
 			expect(UsLink).not.toHaveClass('active');
-		}, 100);
+		});
 	});
 
 	it('should be disabled when we\'re on a single article page and enabled when we\'re on other pages', () => {

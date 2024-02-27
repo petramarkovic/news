@@ -5,7 +5,7 @@ import { Button } from '../UI/Button/Button';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'react-i18next';
-import { useMedia } from '../../hooks/useMedia';
+import { useMedia } from '../../hooks/useMedia/useMedia';
 
 export const Navbar = () => {
 	const { t } = useTranslation();
