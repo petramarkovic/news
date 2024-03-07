@@ -2,7 +2,7 @@ import { Header } from './components/Header';
 import { Home } from './pages/Home';
 import { Categories } from './pages/Categories';
 import { Article } from './pages/Article';
-import { Search } from './pages/Search';
+import { SearchPage } from './pages/SearchPage';
 import { Articles } from './components/Articles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './store/languageContext';
@@ -27,7 +27,7 @@ function App() {
 						<Route path='/' element={<Home />} />
 						<Route path='/categories' element={<Categories />} />
 						<Route path='/article' element={<Article />} />
-						<Route path='/search' element={<Search />} />
+						<Route path='/search' element={<SearchPage />} />
 						<Route path='/categories/:category' element={<Articles />} />
 					</Routes>
 				</LanguageProvider>
