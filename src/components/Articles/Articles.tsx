@@ -7,18 +7,29 @@ import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import { useLanguageContext } from '../../store/languageContext';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react';
+import placeholderImage from '../../assets/placeholder-image.jpg';
 import useDate from '../../hooks/useDate';
 import useArticle from '../../hooks/useArticle';
 
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
-	const { data, isLoading, error, formattedCategory } = useArticle();
+	const { data, isLoading, error, formattedCategory, hasNextPage, fetchNextPage, isFetchingNextPage } = useArticle();
 	const { t } = useTranslation();
 	const { formattedDate } = useDate();
 
 	const GBTitle = t('greatBritain');
 	const USTitle = t('unitedStates');
 	const removedArticle = t('removed');
+
+	const { ref, inView } = useInView();
+
+	useEffect(() => {
+		if (inView && hasNextPage) {
+			fetchNextPage();
+		}
+	}, [inView, hasNextPage]);
 
 	const skeletonArray = Array.from({ length: 9 }, (_, index) => (
 		<CardSkeleton key={index} />
@@ -51,29 +62,33 @@ export const Articles: React.FC = () => {
 				<div className='flex flex-wrap'>
 					{error && <p>{t('errorFetchingData')}</p>}
 					{isLoading && skeletonArray}
-					{data && (
-						<div className='flex flex-wrap w-full'>
-							{data.articles
+					{data?.pages.map((page, index) => (
+						<div className='flex flex-wrap' key={index}>
+							<div className='flex flex-wrap w-full' key={index}>
+								{page.data
 								.filter((article) => !article.title.includes(removedArticle))
-								.map((article, index) => (
+								.map((article) => (
 									<div
-										key={index}
-										className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch transition hover:text-secondary justify-stretch relative'>
-										<Link
-											to='/article'
-											state={article}
-											className='shadow-md rounded-lg h-full flex flex-col hover:cursor-pointer transition '>
-											<Card
-												title={article.title}
-												description={article.description}
-												urlToImage={article.urlToImage}
-											/>
-											<ChevronRightIcon className='absolute bottom-5 flex justify-center items-center right-3 w-5 h-5 bg-primary rounded-full text-secondaryDark opacity-80 bg-transparent' />
-										</Link>
-									</div>
+									key={article.title}
+									className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch transition hover:text-secondary justify-stretch relative'>
+									<Link
+										to='/article'
+										state={article}
+										className='shadow-md rounded-lg h-full flex flex-col hover:cursor-pointer transition '>
+										<Card
+											title={article.title}
+											description={article.description}
+											urlToImage={article.urlToImage || placeholderImage}
+										/>
+										<ChevronRightIcon className='absolute bottom-5 flex justify-center items-center right-3 w-5 h-5 bg-primary rounded-full text-secondaryDark opacity-80 bg-transparent' />
+									</Link>
+								</div>
 								))}
+							</div>
+							<div ref={ref}></div>
+							{isFetchingNextPage && <p>loading...</p>}
 						</div>
-					)}
+					))}
 				</div>
 			</Wrap>
 		</div>
