@@ -16,37 +16,25 @@ const useArticle = () => {
 	const { category } = useParams();
 	const formattedCategory = category || '';
 
-	const fetchArticles = ({ pageParam }: { pageParam: number }): Promise<Page> => {
-		return new Promise<Page>(async (resolve, reject) => {
-			try {
-				const url = `https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}&page=${pageParam}&pageSize=6`;
-				const response = await fetchData<{
-					articles: ArticleInterface[];
-					totalResults?: number;
-				}>(url);
-				
-
-				const page: Page = {
-					data: response.articles,
-					currentPage: pageParam,
-					nextPage: pageParam + 1
-				};
-
-				console.log(page)
-				console.log(page.currentPage)
-				resolve(page);
-			} catch (error) {
-				reject(error);
-			}
+	const fetchArticles = async ({ pageParam }: { pageParam: number }): Promise<Page> => {
+		const url = `https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}&page=${pageParam}&pageSize=6`;
+		const response = await fetchData<{
+			articles: ArticleInterface[];
+			totalResults?: number;
+		}>(url);
+		return ({
+			data: response.articles,
+			currentPage: pageParam,
+			nextPage: pageParam + 1
 		});
 	};
 
 	const { data, error, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
-		useInfiniteQuery<Page, string>({
+		useInfiniteQuery<Page, string, unknown, unknown[], number>({
 			queryKey: ['articles', lang, formattedCategory],
-			queryFn: ({ pageParam }) => fetchArticles({ pageParam }),
+			queryFn: fetchArticles,
 			initialPageParam: 1,
-        	getNextPageParam: (lastPage) => lastPage.nextPage
+			getNextPageParam: (lastPage) => lastPage.nextPage
 		});
 
 	return {
