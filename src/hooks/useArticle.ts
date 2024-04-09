@@ -1,14 +1,9 @@
 import { useLanguageContext } from '../store/languageContext';
 import { useParams } from 'react-router-dom';
-import { ArticleInterface } from '../types';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { fetchData } from '../utils/fetchData';
+import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
+import { fetchArticles } from '../service/articlesService';
+import { Page } from '../service/articlesService';
 
-interface Page {
-	data: ArticleInterface[];
-	currentPage: number;
-	nextPage: number;
-}
 
 const useArticle = () => {
 	const { lang } = useLanguageContext();
@@ -16,25 +11,13 @@ const useArticle = () => {
 	const { category } = useParams();
 	const formattedCategory = category || '';
 
-	const fetchArticles = async ({ pageParam }: { pageParam: number }): Promise<Page> => {
-		const url = `https://newsapi.org/v2/top-headlines?country=${lang}&category=${formattedCategory}&apiKey=${key}&page=${pageParam}&pageSize=6`;
-		const response = await fetchData<{
-			articles: ArticleInterface[];
-			totalResults?: number;
-		}>(url);
-		return ({
-			data: response.articles,
-			currentPage: pageParam,
-			nextPage: pageParam + 1
-		});
-	};
-
-	const { data, error, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
-		useInfiniteQuery<Page, string, unknown, unknown[], number>({
-			queryKey: ['articles', lang, formattedCategory],
-			queryFn: fetchArticles,
+	const { data, error, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage, status } =
+		useInfiniteQuery<Page, string, InfiniteData<Page>, unknown[], number>({
+			queryKey: ['articles', lang, formattedCategory, 'articles-component'],
+			queryFn: ({ pageParam }) => fetchArticles({ lang, category: formattedCategory, apiKey: key, pageParam }),
 			initialPageParam: 1,
-			getNextPageParam: (lastPage) => lastPage.nextPage
+			getNextPageParam: (lastPage) => lastPage.nextPage || undefined,
+			staleTime: 60 * (60 * 1000)
 		});
 
 	return {
@@ -44,7 +27,8 @@ const useArticle = () => {
 		error,
 		formattedCategory,
 		hasNextPage,
-		fetchNextPage
+		fetchNextPage,
+		status
 	};
 };
 

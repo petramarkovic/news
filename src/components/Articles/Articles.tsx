@@ -15,7 +15,15 @@ import useArticle from '../../hooks/useArticle';
 
 export const Articles: React.FC = () => {
 	const { lang } = useLanguageContext();
-	const { data, isLoading, error, formattedCategory, hasNextPage, fetchNextPage, isFetchingNextPage } = useArticle();
+	const {
+		data,
+		isLoading,
+		error,
+		formattedCategory,
+		hasNextPage,
+		fetchNextPage,
+		isFetchingNextPage
+	} = useArticle();
 	const { t } = useTranslation();
 	const { formattedDate } = useDate();
 
@@ -26,10 +34,10 @@ export const Articles: React.FC = () => {
 	const { ref, inView } = useInView();
 
 	useEffect(() => {
-		if (inView && hasNextPage) {
+		if (hasNextPage && inView && !isFetchingNextPage) {
 			fetchNextPage();
 		}
-	}, [inView, hasNextPage]);
+	}, [inView, hasNextPage, isFetchingNextPage]);
 
 	const skeletonArray = Array.from({ length: 9 }, (_, index) => (
 		<CardSkeleton key={index} />
@@ -59,18 +67,16 @@ export const Articles: React.FC = () => {
 						{t('goBackButtonCategories')}
 					</Link>
 				)}
-				<div className='flex flex-wrap'>
-					{error && <p>{t('errorFetchingData')}</p>}
-					{isLoading && skeletonArray}
-					{data?.pages.map((page, index) => (
-						<div className='flex flex-wrap' key={index}>
-							<div className='flex flex-wrap w-full' key={index}>
-								{page.data
-								.filter((article) => !article.title.includes(removedArticle))
-								.map((article) => (
-									<div
+				{error && <p>{t('errorFetchingData')}</p>}
+				{isLoading && skeletonArray}
+					<div className='flex flex-wrap'>
+					{data?.pages.map((page) =>
+						page.data
+							.filter((article) => !article.title.includes(removedArticle))
+							.map((article) => (
+								<div
 									key={article.title}
-									className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch transition hover:text-secondary justify-stretch relative'>
+									className='sm:w-full sm:max-w-full md:w-1/2 lg:w-1/3 p-2 self-stretch transition hover:text-secondary justify-stretch relative inline-flex'>
 									<Link
 										to='/article'
 										state={article}
@@ -83,13 +89,11 @@ export const Articles: React.FC = () => {
 										<ChevronRightIcon className='absolute bottom-5 flex justify-center items-center right-3 w-5 h-5 bg-primary rounded-full text-secondaryDark opacity-80 bg-transparent' />
 									</Link>
 								</div>
-								))}
-							</div>
-							<div ref={ref}></div>
-							{isFetchingNextPage && <p>loading...</p>}
-						</div>
-					))}
+							))
+					)}
+					<div ref={ref}></div>
 				</div>
+				{isFetchingNextPage && <p className='flex items-center justify-center m-5 text-lg font-bold'>Loading ...</p>}
 			</Wrap>
 		</div>
 	);
