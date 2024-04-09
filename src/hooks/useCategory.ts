@@ -9,7 +9,8 @@ const useCategory = (category: string) => {
 	const { lang } = useLanguageContext();
 
 	const { data, error, isPending } = useQuery<ArticlesArrayInterface, string>({
-		queryKey: ['articles', lang, category],
+		queryKey: ['articles', lang, category, 'categories-page'],
+		staleTime: 60 * (60 * 1000),
 		queryFn: () =>
 			fetchData<ArticlesArrayInterface>(
 				`https://newsapi.org/v2/top-headlines?country=${lang}&category=${category}&apiKey=${key}&pageSize=5`

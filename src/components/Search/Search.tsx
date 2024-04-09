@@ -1,17 +1,17 @@
-import { useLanguageContext } from '../store/languageContext';
+import { useLanguageContext } from '../../store/languageContext';
 import { useState, useEffect } from 'react';
-import { useSearch } from '../hooks/useSearch';
-import { Wrap } from '../components/UI/Wrap/Wrap';
+import { useSearch } from '../../hooks/useSearch';
+import { Wrap } from '../../components/UI/Wrap/Wrap';
 import { XMarkIcon } from '@heroicons/react/20/solid';
-import { Card, CardSkeleton } from '../components/Card';
-import { Input } from '../components/Input';
+import { Card, CardSkeleton } from '../../components/Card';
+import { Input } from '../../components/Input';
 import { Link, useSearchParams } from 'react-router-dom';
-import { useDebounce } from '../hooks/useDebounce';
+import { useDebounce } from '../../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
-import { Button } from '../components/UI/Button/Button';
+import { Button } from '../../components/UI/Button/Button';
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
-import Loader from '../components/UI/Loader/Loader';
-import useDate from '../hooks/useDate';
+import Loader from '../../components/UI/Loader/Loader';
+import useDate from '../../hooks/useDate';
 
 export const Search: React.FC = () => {
 	const { lang } = useLanguageContext();
@@ -68,6 +68,7 @@ export const Search: React.FC = () => {
 							onChange={handleInputChange}
 							name='search'
 							type='text'
+							placeholder='Search ...'
 						/>
 						{isLoading && <Loader />}
 						{!!data?.articles.length && (
